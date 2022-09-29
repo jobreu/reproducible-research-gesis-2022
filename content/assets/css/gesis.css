@@ -1,0 +1,168 @@
+/************
+
+gesistheme
+Styles for Xaringan slides with GESIS theme
+July 2021
+
+/************
+
+/* Title slide */
+.title-slide {
+  background-image: url(../img/title_background.png);
+  background-size: cover;
+}
+
+.title-slide h1 {
+  color: #58748F;
+  margin-top: 255px;
+  margin-left: 300px;
+  margin-right: 50px;
+  text-align: left;
+  font-size: 28pt; /*36.4px;*/
+  position: fixed;
+}
+
+.title-slide h2 {
+  color: #FFFFFF;
+  font-weight: normal;
+  margin-top: 375px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 24pt;
+  position: fixed;
+}
+
+/*.title-slide h3 {
+  color: #FFFFFF;
+  font-style: italic;
+  margin-top: 420px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 16pt;
+  position: fixed;
+}*/
+
+.title-slide h3:nth-of-type(1) {
+  color: #FFFFFF;
+  font-style: italic;
+  margin-top: 420px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 16pt;
+  position: fixed;
+}
+
+.title-slide h3:nth-of-type(2) {
+  color: #FFFFFF;
+  font-style: italic;
+  margin-top: 455px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 16pt;
+  position: fixed;
+}
+
+
+
+.title-slide .remark-slide-number {
+  display: none;
+}
+
+/* Header */
+
+.hljs-github {
+  background-image: url(../img/header.png);
+  background-size: contain;
+  background-position: top;
+}
+
+.inverse {
+  background-image: url(../img/title_background.png);
+  background-size: cover;
+}
+
+
+/* Slide number */
+
+.remark-slide-number {
+  font-size: 9pt;
+  margin-bottom: 2px;
+  margin-right: 40px;
+}
+
+/* Highlight color */
+
+.highlight {background-color: #FF6100;}
+
+/* Headings */
+
+h1, h2, h3 {
+  font-family: 'Source Sans Pro';
+  font-weight: normal;
+  font-size: 36pt;
+  color: #58748F;
+  text-shadow: none;
+  position: relative;
+  top: 25px;
+  text-align: center;
+  margin-bottom: 65px
+}
+
+/* Body */
+
+.remark-slide-content {
+  font-family: 'Source Sans Pro', serif;
+  font-size: 18pt;
+  padding: 1em 4em 1em 4em;
+}
+
+/* Code */
+.remark-code {
+  font-family: 'Source Code Pro', monospace;
+  font-size: 9pt;
+}
+
+a, a > code {
+  color: #FF6100;
+  text-decoration: none;
+}
+
+
+
+/* Custom Fonts */
+
+.bold {font-weight: bold}
+.smaller { font-size: 70% }
+.small { font-size: 80% }
+.ssmall { font-size: 90% }
+.large { font-size: 130% }
+.larger { font-size: 150% }
+.huge { font-size: 300% }
+.tinyisher {
+  font-size: 50%;
+  line-height: 1.1;
+  display: block;
+}
+.tinyish {font-size: 30% }
+
+.small .remark-code {
+  font-size: 65%;
+  line-height: 1.1;
+  display: block;
+}
+
+.tinyisher .remark-code {
+  font-size: 50%;
+  line-height: 1.1;
+  display: block;
+}
+
+.mini .remark-code {
+  font-size: 30%;
+  line-height: 1.1;
+  display: block;
+}

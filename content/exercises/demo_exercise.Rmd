@@ -1,0 +1,35 @@
+---
+title: 'Fancy Exercise'
+author: 'Cute Cat'
+date: 'This is not really a date but a title of your course'
+---
+
+```{r child = "../config/exercises_setup.Rmd"}
+```
+
+
+Blablabla
+
+```{r}
+x <- 1
+x
+```
+
+
+```{block, box.title = "1", box.body = list(fill = "white"), box.icon = "fa-star"}
+Please install and/or load the `woRkshoptools` package.
+```
+
+```{block, opts.label = "clues"}
+We always recommend using the `easypackages` packages, which can be installed with the command `install.packages("easypackages")`. After loading the package with `library(easypackages)` you can load *and* install packages (if necessary) with one command: `easypackages::packages("fancy_package_1", "fancy_package_2", ...)`
+```
+
+```{r first.exercise, solution = TRUE}
+easypackages::packages(
+  "StefanJuenger/woRkshoptools"
+)
+```
+
+
+
+

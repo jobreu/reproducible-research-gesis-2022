@@ -1,0 +1,39 @@
+```{r gather-contact-details, echo = FALSE}
+envelope <- icons::fontawesome('envelope')
+twitter <- icons::fontawesome('twitter')
+github <- icons::fontawesome('github')
+home <- icons::fontawesome('home')
+
+presenter_data <-
+  readr::read_csv("./content/config/presenters") %>% 
+  dplyr::filter(name == rmarkdown::metadata$presenter)
+```
+```{r background, results = 'asis', verbatim = TRUE, echo = FALSE}
+cat("
+layout: false
+class: center
+background-image: url(../assets/img/the_end.png)
+background-size: cover
+
+.left-column[
+</br>"
+)
+```
+```{r pic, echo = FALSE, out.width = '75%'}
+woRkshoptools::include_picture(paste0(presenter_data$name, ".png"))
+```
+```{r contact-details, results = 'asis', verbatim = TRUE, echo = FALSE}
+paste0("
+]
+.right-column[
+.left[.small[", envelope, " [", presenter_data$mail, "](mailto:", presenter_data$mail, ")]
+.small[", twitter, " [`@", presenter_data$twitter, "`](https://twitter.com/", presenter_data$github, ")]
+.small[", github,  " [`", presenter_data$github, "`](https://github.com/", presenter_data$github, ")]
+.small[", home, " [`", presenter_data$home, "`](", presenter_data$home, ")]]
+]
+"
+) %>% 
+  cat()
+```
+
+

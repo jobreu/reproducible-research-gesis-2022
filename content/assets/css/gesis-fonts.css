@@ -1,0 +1,22 @@
+/************
+
+gesistheme
+Styles for Xaringan slides with GESIS theme
+November 2019
+
+/************
+
+/* Import fonts */
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+@import url(https://cdn.rawgit.com/tonsky/FiraCode/1.204/distr/fira_code.css);
+
+/* Sans serif body text */
+
+body { font-family: sans-serif, 'Source Sans Pro'; }
+
+/* Monospace script */ 
+
+.remark-code, .remark-inline-code {
+  font-family: 'Fira Code', monospace;
+}

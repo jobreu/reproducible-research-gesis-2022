@@ -1,0 +1,33 @@
+---
+title: "Demo Slides"
+subtitle: "Catchy Subtitle"
+author: "Johannes Breuer & Stefan Jünger"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+presenter: Stefan
+---
+layout: true
+
+```{r child = "../config/sessions_setup.Rmd"}
+```
+
+<!-- START HERE WITH SLIDES -->
+
+---
+
+## Content
+
+Mauz
+
+```{r some-code}
+x <- 1
+x
+```
+
+<!-- STOP WITH SLIDES HERE -->
+
+---
+
+```{r child = "../config/sessions_end.Rmd"}
+```
+
+
