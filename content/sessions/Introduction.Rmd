@@ -1,0 +1,194 @@
+---
+title: "Reproducible Research in the Quantitative Social Sciences"
+subtitle: "Introduction"
+author: "Johannes Breuer, Bernd Weiss, & Arnim Bleier"
+presenter: Johannes
+editor_options: 
+  chunk_output_type: console
+---
+layout: true
+
+```{r child = "content/config/sessions_setup.Rmd"}
+```
+
+---
+
+## Goals of this course
+
+After this course you should be...
+  - familiar with key concepts of reproducible research workflows
+  - able to (start) work(ing) with tools for reproducible research, such as `Git`, `LaTeX`, `R Markdown`, `Jupyter Notebooks`, and `Binder`
+  - able to publish reproducible computational analysis pipelines with `R`
+
+---
+
+## Prerequisites
+
+For this course (esp. the exercises) you should have the following things installed on your computer:
+
+- A version of [`R`](https://www.r-project.org/) that is >= 4.0.0
+  - the following `R` packages: `tidyverse`, `rmarkdown`, `usethis`<sup>1</sup>
+  
+```{r install-pkg, echo=TRUE, eval=FALSE}
+# check if packages are installed and install missing ones
+packages = c("tidyverse", "rmarkdown", "usethis")
+
+install.packages(setdiff(packages, rownames(installed.packages())))
+```
+
+- A recent version of [*RStudio*](https://www.rstudio.com/)
+- [`Git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+In addition, you should also have/create a [*GitHub*](https://github.com/) account.
+
+---
+
+## Disclaimer
+
+We will cover several different tools that can be used for reproducible research in the quantitative social sciences. We will only be able to cover the basics of those tools, so if you want to continue to use them and use them in more advanced ways, you will probably need to "dig deeper" eventually and consult further resources (documentation, further tutorials, blog posts, or other publications). As you probably already know, there are a lot of different tools and workflows that can be employed for increasing the reproducibility of research. We will introduce you to some of those, but there is more, and, in the end, it depends on your personal preferences and needs what tools and workflows you employ.<sup>1</sup>
+
+---
+
+## Disclaimer
+
+In this course, we will focus on reproducible research using `R`. However, there also are solutions for reproducible research with other programming languages, such as `Python` or `Julia`, as well as statistical software packages, such as *SPSS*  and *Stata*.
+
+.small[
+.footnote[
+[1] As you will see, we instructors also all have different preferences in our workflows and tool use.
+]
+]
+
+---
+
+## About us
+
+*Johannes Breuer*
+
+.small[
+- Senior researcher in the team *Data Augmentation* in the department *Survey Data Curation* at *GESIS*
+    - digital trace data for social science research
+    - data linking (surveys + digital trace data) 
+    
+- (Co-) Team leader of the team *Research Data & Methods* at the *Center for Advanced Internet Studies* (CAIS)
+    
+- Ph.D. in Psychology, University of Cologne  
+
+- Previously worked in several research projects investigating the use and effects of digital media (Cologne, Hohenheim, Münster, Tübingen)  
+
+- Other research interests
+    - Computational methods
+    - Data management
+    - Open science
+
+[johannes.breuer@gesis.org](mailto:johannes.breuer@gesis.org), [@MattEagle09](https://twitter.com/MattEagle09), [personal website](https://www.johannesbreuer.com/)
+
+]
+
+---
+
+## About us
+
+*Bernd Weiß*
+
+.small[
+- Head of team [GESIS Panel](https://www.gesis.org/en/gesis-panel/gesis-panel-home) and deputy head of the department [Survey Design and Methodology](https://www.gesis.org/en/institute/departments/survey-design-and-methodology) at GESIS
+
+- Obtained a doctorate (Sociology) from the University of Cologne in 2008
+
+- Research interests: methods of empirical research in the social sciences, survey methodology, family sociology and juvenile delinquency  
+
+- Approach to this workshop (and a disclaimer): Open Science and reproducible research are tools, but not part of my research agenda and I do not claim to be an expert in any of the things I will be talking about...  
+
+[bernd.weiss@gesis.org](mailto:bernd.weiss@gesis.org), [ORCID: 0000-0002-1176-8408](https://orcid.org/0000-0002-1176-8408), [@berndweiss](https://twitter.com/berndweiss), [personal website](https://berndweiss.net)
+]
+
+---
+
+## About us
+
+### Arnim Bleier 
+
+.small[
+- Senior researcher in the team *Designed Digital Data* in the department *Computational Social Science* at *GESIS*
+    - natural language processing
+    - probabilistic graphical models
+  
+    
+- Ph.D. in statistics / machine learning, Leipzig University  
+
+- Other research interests
+    - Structural equation modeling
+    - Distributed databases
+    - Right to replicate
+
+[arnim.bleier@gesis.org](mailto:arnim.bleier@gesis.org), [@arnimb](https://twitter.com/arnimb), [Google Scholar](https://scholar.google.de/citations?user=_fof5_EAAAAJ)
+
+]
+
+
+---
+
+## About you
+
+- What's your name?  
+
+- Where do you work & what is your field?  
+
+- What are your experiences with reproducible research practices (and the tools we cover in this course)?
+
+- What are your expectations for this course?
+
+---
+
+## Workshop Structure & Materials
+
+- The workshop consists of a combination of lectures and hands-on exercises
+
+- Slides and other materials are available at
+
+https://github.com/jobreu/reproducible-research-gesis-2022
+
+- The workshop repository on the [*GESIS ILIAS*](https://ilias.gesis.org) contains some literature on tools and workflows for reproducibility as well as a timetable for this workshop
+
+---
+
+## Online format
+
+- If possible, we invite you to turn on your camera
+
+- If you have an immediate question during the lecture parts, please send it via text chat, publicly or privately (to a person who is currently not presenting if you want an immediate response)
+
+- If you have a question that is not urgent and might be interesting for everybody, you can also use audio (& video) to ask it at the end of a lecture part or during the exercises
+
+  - please use the use the "raise hand" function in *Zoom* for this
+
+- We would also kindly ask you to mute your microphones when you are not asking (or answering) a question
+
+---
+
+## Course schedule - Day 1
+
+```{r schedule-1, echo = F}
+course_content_1
+```
+
+---
+
+## Course schedule - Day 2
+
+```{r schedule-2, echo = F}
+course_content_2
+```
+
+---
+
+class: center, middle
+
+# Any questions so far?
+
+---
+
+class: center, middle
+
+# Next up: What is reproducibility and why does it matter?

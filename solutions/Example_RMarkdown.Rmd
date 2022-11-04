@@ -1,0 +1,163 @@
+---
+title: "The relationship between trust in institutions and use of news media sources in the early phase of the COVID-19 pandemic"
+subtitle: "An analysis based on the GESIS Panel Special Survey on the Coronavirus SARS-CoV-2 Outbreak in Germany"
+author: "R User"
+date: "`r Sys.Date()`"
+output: 
+  html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message = FALSE)
+
+options(scipen = 10,
+        digits = 2)
+```
+
+```{r packages, include=FALSE}
+if(!require(easypackages)){
+    install.packages("easypackages")
+    library(easypackages)
+}
+
+# We will use the tidyverse packages for data wrangling and sjPlot, correlation, and stargazer for tables and plots
+# Please note that the correlation package is quite dependency-heavy and might take a while to install
+
+packages("tidyverse", 
+         "sjPlot",
+         "correlation",
+         "stargazer",
+         prompt = FALSE)
+
+```
+
+```{r data, echo=FALSE}
+gp_covid <- read_csv("../data/ZA5667_v1-0-0_CSV_synthetic-data.csv")
+
+corona_survey <- gp_covid %>% 
+  select(sex,
+         trust_government = hzcy048a,
+         trust_who = hzcy051a,
+         trust_scientists = hzcy052a,
+         info_nat_pub_br = hzcy084a,
+         info_fb = hzcy090a) %>%
+  na_if(97) %>% 
+  na_if(98)
+```
+
+# Research question
+
+We want to investigate whether the sources of information that people have used for getting current information about the Corona virus are related to their trust in different groups and institutions. The analyses performed in this paper are inspired by this recently published paper which also made use of the *GESIS Panel Special Survey on the Coronavirus SARS-CoV-2 Outbreak in Germany* (in combination with data from Facebook/Crowdtangle): Stier, S., Weiß, B., Hartmann, T., Flöck, F., Breuer, J., Schaurer, I., & Kummerow, M. (2022). The role of the information environment during the first COVID-19 wave in Germany. *Political Research Exchange*, *4*(1), Advance online publication. https://doi.org/10.1080/2474736X.2022.2135451
+
+# Methods
+
+## Sample
+
+The data we use comes from the [Public Use File (PUF) of the GESIS Panel Special Survey on the Coronavirus SARS-CoV-2 Outbreak in Germany](https://search.gesis.org/research_data/ZA5667). The data set includes data for *N* = `r nrow(corona_survey)` respondents, of which *n* = `r corona_survey %>% filter(sex == 2) %>% nrow()` were female and *n* = `r corona_survey %>% filter(sex == 1) %>% nrow()` were male. 
+
+## Measures
+
+The variables we are interested in for this analysis are the ones measuring trust in 1) the federal government, 2) the World Health Organization (WHO), and 3) scientists in dealing with the Corona virus as predictors, and the use of a) national public television or radio and b) Facebook as sources of current information about the Corona virus. 
+
+The predictors assessing trust were measured on a 5-point scale ranging from "1 - Do not trust at all" to "5 - Entirely trust", with the additional response option "Don't know" (those responses were excluded from our analyses). The two outcome variables were binary items. Respondents could either indicate that they used the respective source (in our case: national public television or radio and Facebook) for getting current information about the Corona virus or not.
+
+# Results
+
+## Descriptive statistics
+
+*Table 1* shows the descriptive statistics for the trust variables.
+
+```{r desctable, results='asis'}
+corona_survey %>% 
+  select(starts_with("trust")) %>% 
+  rename(`Trust in federal government` = trust_government,
+         `Trust in WHO` = trust_who,
+         `Trust in scientists` = trust_scientists) %>% 
+  as.data.frame() %>% 
+  stargazer(type = "html",
+            digits = 2,
+            title="Table 1. Descriptive statistics",
+            header = FALSE)
+```
+
+## Correlations
+
+*Table 2* and *Figure 1* show the correlations between the trust variables.
+
+**Table 2**
+*Correlations between trust variables*
+```{r correlation-table}
+corona_survey %>% 
+  select(starts_with("trust")) %>% 
+  rename(`Trust in federal government` = trust_government,
+         `Trust in WHO` = trust_who,
+         `Trust in scientists` = trust_scientists) %>% 
+  correlation() %>% 
+  knitr::kable()
+```
+
+```{r correlation-plot}
+corona_survey %>% 
+  select(starts_with("trust")) %>% 
+  rename(`Trust in federal government` = trust_government,
+         `Trust in WHO` = trust_who,
+         `Trust in scientists` = trust_scientists) %>% 
+  correlation() %>%
+  summary() %>% 
+  plot()
+```
+
+## Regression analysis
+
+We use a logistic regression model to explore how the use of 1) national public television and radio and 2) Facebook as sources of current information about the Corona virus are predicted by trust in the federal government, the WHO, and scientists in general.
+
+```{r regression}
+model_pubbr <- glm(info_nat_pub_br ~ trust_government + trust_who + trust_scientists,
+                   family = binomial(link = "logit"),
+                   data = corona_survey)
+
+model_fb <- glm(info_fb ~ trust_government + trust_who + trust_scientists,
+                family = binomial(link = "logit"),
+                data = corona_survey)
+
+```
+
+*Table 3* shows the results of the two logistic regression models.
+
+```{r reg-results, results='asis'}
+tab_model(model_pubbr, model_fb,
+            pred.labels = c("Intercept",
+                            "Trust in federal government ",
+                            "Trust in WHO",
+                            "Trust in scientists"),
+            dv.labels = c("Public broadcasting as info source", 
+                          "Facebook as info source"),
+            title = "Table 3. Results of the logistic regression models")
+
+```
+
+
+*Figure 2* displays the results of the two logistic regression models.
+
+```{r reg-plot}
+plot_models(model_pubbr, model_fb,
+            show.values = TRUE,
+            axis.labels = c("Trust in scientists",
+                            "Trust in WHO",
+                            "Trust in federal government"),
+            m.labels = c("Public broadcasting as info source", 
+                          "Facebook as info source"),
+            title = "Figure 2. Logistic regression models predicting the use of different information sources")
+```
+
+# Discussion
+
+Trust in the federal government and trust in scientists emerged as significant positive predictors of using national public broadcasting as a source of current information about the Corona virus, meaning that people who show higher trust in these institutions are more likely to use this source of information. Contrarily, these two trust measures negatively predicted the use of Facebook as a source of information, meaning that individuals with lower levels of trust in the federal government and scientists are more likely to use Facebook as an information source. These results show that trust in institutions and information behavior are related.
+
+# Reproducibility information
+
+```{r session-info, results='asis'}
+sessionInfo() %>% 
+  print(locale = FALSE)
+```

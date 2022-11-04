@@ -6,11 +6,12 @@ knitr::opts_chunk$set(
   echo = TRUE, 
   fig.align = "center", 
   message = FALSE, 
+  warning = FALSE,
   cache = FALSE
 )
 
 # load course content table
-# source("./content/R/course_content.R")
+source("./content/R/course_content.R")
 
 options(warn = -1)
 
