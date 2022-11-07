@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use these materials, please cite them as follows."
+authors:
+- family-names: "Breuer"
+  given-names: "Johannes"
+  orcid: "https://orcid.org/0000-0001-5906-7873"
+- family-names: "Weiss"
+  given-names: "Bernd"
+  orcid: "https://orcid.org/0000-0002-1176-8408"
+- family-names: "Bleier"
+  given-names: "Arnim"
+  orcid: " https://orcid.org/0000-0003-3794-0904"
+title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
+date-released: 2022-11-17
+url: "https://github.com/jobreu/reproducible-research-gesis-2022"
