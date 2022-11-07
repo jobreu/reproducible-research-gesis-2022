@@ -1,0 +1,149 @@
+---
+title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
+subtitle: "Introduction"
+author: "Johannes Breuer, Bernd Weiss, & Arnim Bleier"
+date: "2022-11-18"
+presenter: Johannes
+editor_options: 
+  chunk_output_type: console
+---
+layout: true
+
+```{r child = "content/config/sessions_setup.Rmd"}
+```
+
+---
+
+## Recap - Day 1
+
+```{r schedule-1, echo = F}
+course_content_1
+```
+
+---
+
+## Recap - Day 2
+
+```{r schedule-2, echo = F}
+course_content_2
+```
+
+---
+
+## Other topics in reproducible research
+
+As we said in the introduction, we cannot cover all tools and topics related to reproducible research in this workshop. However, we want to use this session to cover some additional tools as well as other topics in reproducible research:
+
+- `R` package dependency management
+- Preventing code rot
+- Workflow & project templates
+
+---
+## Dependency management
+
+- Our projects may use/require different package versions
+- Manually managing dependencies is a nightmare
+    - Keeping track of the dependencies and their changes
+    - Restoring the `R` environment
+
+---
+
+## Dependency management
+
+1. [`checkpoint`](https://github.com/RevolutionAnalytics/checkpoint/) by Microsoft
+  - Requires a project-based workflow
+  - Package database will gradually grow
+--
+
+2. [`groundhog`](https://groundhogr.com/)
+  - Package database will gradually grow
+--
+
+3. [`renv`](https://rstudio.github.io/renv/articles/renv.html) by RStudio
+  - Most flexible and powerful
+  - Least straightforward to use
+  
+---
+
+# Project setup and templates
+
+In this workshop, we have shown you how to manually set up a reproducible research workflows. However, there are some tools that you can use to automate parts of this process. These can range from very simple to very elaborate solutions. We will show you two examples in the following.
+
+---
+
+# Project setup and templates
+
+`create-project.sh`: small shell script for initializing a basic project folder structure (which can be easily adapted and extended using any text editor)
+
+To run the file, open a shell/command line interface (and navigate to) where the `create-project.sh` file is located. To execute it, you need to provide a valid path for the new project folder that should be created as an argument.
+
+---
+
+# Project setup and templates
+
+```{r eval=FALSE, echo=TRUE}
+sh create-project.sh "./my-project"
+```
+
+---
+
+# Workflow tools
+
+There also are several `R` other packages for facilitating the creation and maintenance of reproducible research workflows, such as...
+
+- [`template`](https://github.com/crsh/template)
+- [`WORCS`](https://cjvanlissa.github.io/worcs/index.html) - *Workflow for Open Reproducible Code in Science*
+- [`workflowr`](https://workflowr.github.io/workflowr/)
+- [`starter`](https://www.danieldsjoberg.com/starter/)
+- [`rrtools`](https://github.com/benmarwick/rrtools) - Tools for Writing Reproducible Research in R
+
+[*start your lab*](https://www.startyourlab.com/) also provides an [`R` Project Template](https://github.com/startyourlab/r-project-template).
+
+---
+
+# Shoulders of giants... but sometimes also clay feet
+
+As you may have already experienced, not all tools always play together nicely. Keep in mind, that most tools that we have covered in this workshop are free and open source software (FOSS). Also, tool stacks can have break points and many tools themselves depend on other tools/tool stacks. Hence, things may not always work perfectly.
+
+But don't despair! There usually are solutions ([*Stack Overflow*](https://stackoverflow.com/) and issues in associated *GitHub* repositories are good places to find them) and the advantage of FOSS is that there usually is an active development community that you can also get involved in.
+
+---
+
+# Showing appreciation `r ji("clapping_hands")`
+
+The creation and maintenance of FOSS takes a lot of time and this is rarely recognized as much as it should be. One thing we can do to change this is to at least give credit where credit is due and cite the tools and resources that we use.
+
+---
+
+# Showing appreciation `r ji("clapping_hands")`
+
+```{r cite}
+citation("trackdown")
+```
+
+---
+
+# Looking back
+
+You created a *GitHub* repository containing materials for a fully reproducible research pipeline! `r ji("popper")`
+
+If you created a public *GitHub* repository: Head over to http://starlogs.net/ and paste the URL of the repository to recap your heroic journey into the universe of reproducible research! `r ji("milky_way")`
+
+---
+
+# Looking forward
+
+We hope that we could get you started or help you with with making your research (more) reproducible. 
+Of course, as always, there is much more to explore and learn. The only way to really get familiar with the tools and workflows is if you use them for your own research.
+
+--
+
+Keep calm and stay reproducible! `r ji("smiling_face_with_smiling_eyes")`
+
+---
+
+class: center, middle
+
+# Thank you very much for participating in this workshop! `r ji("bowing_man")`
+
+We hope that you learned something and also had some fun (at least a little bit...)

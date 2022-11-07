@@ -1,0 +1,175 @@
+---
+title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
+subtitle: "Sharing, collaborating, publishing"
+author: "Johannes Breuer, Bernd Weiss, & Arnim Bleier"
+date: "2022-11-18"
+presenter: Johannes
+editor_options: 
+  chunk_output_type: console
+---
+layout: true
+
+```{r child = "content/config/sessions_setup.Rmd"}
+```
+---
+
+## It's all about collaboration `r ji("handshake")`
+
+```{r collab-tweet, echo=FALSE}
+tweet_screenshot("https://twitter.com/jakevdp/status/519563939177197571",
+            theme = "dark")
+```
+https://twitter.com/jakevdp/status/519563939177197571
+
+---
+
+## Who is the reproducer?
+
+Up until now, the scenario in this workshop was that you make your research reproducible for future you. 
+
+However, typically we have others with whom we want to collaborate and share our data, code, etc. 
+
+Going beyond our direct collaborators, the ultimate goal in the sense of open sense should be to make our research reproducible for "the world".
+
+---
+
+## Expanding circles of reproducibility
+
+In the following sessions, we will cover exemplary workflows for the two cases of 1) sharing your work with direct collaborators and 2) sharing your work with the world.
+
+More specifically, we will dive into...
+
+  1. Collaboration using `Git` & *GitHub*
+  2. "One-click reproducibility" using *Jupyter Notebooks* and *Binder*
+  
+Before we do that, however, we want to briefly discuss some general and other topics related to sharing, collaborating, and publishing.
+
+---
+
+## Collaboration & different tool stacks
+
+As we all know from experience, people have different knowledge and preferences regarding the use of research tools. The workflow we focus on in this course require the use of `R`, `R Markdown`, and `Git`, as well as *RStudio* and *GitHub*. However, it is quite likely that we collaborate with others who do not use (all of) these tools.
+
+---
+
+## Collaboration & different tool stacks
+
+There also are `R` packages that you can use for collaborating on `R Markdown` documents with people who do not (want to) use `R Markdown` (and `Git`):
+
+- [`trackdown`](https://claudiozandonella.github.io/trackdown/) uses *Google Drive* for this
+
+- [`redoc`](https://noamross.github.io/redoc/) "is a package to enable a two-way R Markdown-Microsoft Word workflow" (*note*: the project is currently "in suspended animation ")
+
+---
+
+# `trackdown`
+
+The basic workflow for `trackdown` is that you upload the content of an `.Rmd` file to *Google Drive* where you can collaboratively edit the text parts. You can then download the document again (e.g., to edit the code in the `R Markdown` document in *RStudio*), and also update the file on *Google Drive* after changing the `.Rmd` locally. The [`trackdown` documentation](https://claudiozandonella.github.io/trackdown/) provides further details.
+
+---
+
+# Advanced use of `trackdown` with `Git`
+
+To combine `R Markdown` with collaborative text editing via `trackdown` and version control (and to avoid potential issues caused by - possibly unintended - changes to the code parts on *Google Drive*), the author of the `trackdown` package, [Claudio Zandonella Callegher](https://github.com/ClaudioZandonella), proposes a solution in an [issue in the *GitHub* repository for the package](https://github.com/ClaudioZandonella/trackdown/issues/31).
+
+Essentially, the idea here is to create a `trackdown` branch in the `Git` repository and merge it with the `main` branch which is (mainly) used to edit the code.
+
+---
+
+## Sharing is caring
+
+One prerequisite for research being reproducible (by others) is sharing research materials. There are many parts of their work that researchers can share to increase the reproducibility as well as the (potential) replicability of their work (see [Klein et al. (2018)](https://doi.org/10.1525/collabra.158)). Four main types of output are:
+
+1. Data
+2. Code & scripts (for data collection, processing, and analysis)
+3. Other study materials (e.g., questionnaires or stimulus materials)
+4. (Detailed) Information about the study procedure
+
+Notably, all of these outputs should be well-documented (e.g., via README files, metadata or comments in code).
+
+---
+
+## Sharing for reproducibility
+
+While sharing study materials and information about the procedure are important for replicability, for reproducibility, the most important things to share are the data and code.
+
+---
+
+## Sharing data & code
+
+There are many different ways in which researchers can share their data and code/scripts (see [Klein et al. (2018)](https://doi.org/10.1525/collabra.158)). Keeping only local copies of things and sharing upon personal request is not a very sustainable or scalable solution. The better option is sharing via institutional or public archives and repositories.
+
+---
+
+## Fantastic repositories and where to find them `r ji("dragon")`
+
+The paper by [Klein et al. (2018)](https://doi.org/10.1525/collabra.158) provides an overview of public repositories that hold psychological data.<sup>1</sup>
+A good tool for finding suitable repositories is the [*Registry of Research Data Repositories*](https://www.re3data.org/).
+
+<small><small>[1] However, parts of this overview have inevitably become somewhat outdated since the paper was published.</small></small>
+
+---
+
+## How to choose a repository
+
+In general, research data (and code) that are publicly archived should follow the so-called [FAIR principles](https://www.go-fair.org/fair-principles/) ([Wilkinson et al., 2016](https://doi.org/10.1038/sdata.2016.18)), meaning that the shared materials should be...
+
+- **F**indable: Persistent identifiers; metadata; indexed
+- **A**ccessible: Retrievable by identifier; controlled access where necessary
+- **I**nteroperable: Standardized metadata; open, lightweight, and interoperable file formats (e.g., CSV, TSV, JSON, ODS)
+- **R**eusable: Documented; clear usage license
+
+---
+
+## How to choose a repository
+
+Some more specific key criteria for choosing a repository are that it should...
+
+- use persistent and unique identifiers (such as DOIs)
+- accommodate licensing
+- feature access controls (e.g., allowing the restriction of 
+access to a particular set of users)
+- have persistence guarantees for long-term access
+- store data in accordance with local legislation (e.g. the [GDPR](https://gdpr.eu/) in Europe)
+
+.small[See [Klein et al., (2018)](https://doi.org/10.1525/collabra.158) for further details
+]
+
+---
+
+## General public archiving options
+
+Two archiving options that are quite popular among researchers are the [*Open Science Framework*](https://osf.io/) (OSF) and [*Zenodo*](https://zenodo.org/). 
+
+--
+
+While these two archives are not curated, which somewhat reduces findability, they are quite flexible and easy to use. They can be used to share different types of content, including data and code, and also offer some degree of access control. A nice feature of the *OSF* and *Zenodo*, especially for sharing code, is that they offer integration with *GitHub*.
+
+---
+
+## Curated disciplinary archives
+
+A good way to maximize findability and reusability is to make use of curated disciplinary archives. Two of their key advantages are that they a) offer support for researchers who want to archive and share their data, and b) employ structured metadata.
+
+---
+
+## Curated disciplinary archives
+
+*GESIS* offers a [data archive](https://www.gesis.org/en/data-services/share-data) for quantitative social science data with a focus on survey data (and now also digital trace data).
+
+There also are data archives with a social science focus in other countries. Many of the European ones are members of [*CESSDA*](https://www.cessda.eu/), and in the U.S. there is the [*ICPSR*](https://www.icpsr.umich.edu/web/pages/).
+
+---
+
+## Curated disciplinary archives
+
+There are, of course, other curated repositories with a focus on specific disciplines and/or data types, such as [*PsychArchives*](https://www.psycharchives.org/) by *ZPID* for psychology, or [*Qualiservice*](https://www.qualiservice.org/en/) in Germany and the [*The Qualitative Data Repository*](https://qdr.syr.edu/) in the U.S. for qualitative data.
+
+---
+
+## Exemplary workflows
+
+Following these general considerations, let's dive into two exemplary workflows:
+
+  1. Collaboration using `Git` & *GitHub*
+  2. "One-click reproducibility" using *Jupyter Notebooks* and *Binder*

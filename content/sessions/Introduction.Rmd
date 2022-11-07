@@ -1,7 +1,8 @@
 ---
-title: "Reproducible Research in the Quantitative Social Sciences"
+title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
 subtitle: "Introduction"
 author: "Johannes Breuer, Bernd Weiss, & Arnim Bleier"
+date: "2022-11-17"
 presenter: Johannes
 editor_options: 
   chunk_output_type: console
@@ -10,73 +11,23 @@ layout: true
 
 ```{r child = "content/config/sessions_setup.Rmd"}
 ```
-
----
-
-## Goals of this course
-
-After this course you should be...
-  - familiar with key concepts of reproducible research workflows
-  - able to (start) work(ing) with tools for reproducible research, such as `Git`, `LaTeX`, `R Markdown`, `Jupyter Notebooks`, and `Binder`
-  - able to publish reproducible computational analysis pipelines with `R`
-
----
-
-## Prerequisites
-
-For this course (esp. the exercises) you should have the following things installed on your computer:
-
-- A version of [`R`](https://www.r-project.org/) that is >= 4.0.0
-  - the following `R` packages: `tidyverse`, `rmarkdown`, `usethis`<sup>1</sup>
-  
-```{r install-pkg, echo=TRUE, eval=FALSE}
-# check if packages are installed and install missing ones
-packages = c("tidyverse", "rmarkdown", "usethis")
-
-install.packages(setdiff(packages, rownames(installed.packages())))
-```
-
-- A recent version of [*RStudio*](https://www.rstudio.com/)
-- [`Git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-
-In addition, you should also have/create a [*GitHub*](https://github.com/) account.
-
----
-
-## Disclaimer
-
-We will cover several different tools that can be used for reproducible research in the quantitative social sciences. We will only be able to cover the basics of those tools, so if you want to continue to use them and use them in more advanced ways, you will probably need to "dig deeper" eventually and consult further resources (documentation, further tutorials, blog posts, or other publications). As you probably already know, there are a lot of different tools and workflows that can be employed for increasing the reproducibility of research. We will introduce you to some of those, but there is more, and, in the end, it depends on your personal preferences and needs what tools and workflows you employ.<sup>1</sup>
-
----
-
-## Disclaimer
-
-In this course, we will focus on reproducible research using `R`. However, there also are solutions for reproducible research with other programming languages, such as `Python` or `Julia`, as well as statistical software packages, such as *SPSS*  and *Stata*.
-
-.small[
-.footnote[
-[1] As you will see, we instructors also all have different preferences in our workflows and tool use.
-]
-]
-
 ---
 
 ## About us
 
-*Johannes Breuer*
+**Johannes Breuer**
 
 .small[
-- Senior researcher in the team *Data Augmentation* in the department *Survey Data Curation* at *GESIS*
+- Senior researcher in the team *Data Augmentation* in the department [*Survey Data Curation*](https://www.gesis.org/en/institute/departments/survey-data-curation) at *GESIS*
     - digital trace data for social science research
     - data linking (surveys + digital trace data) 
     
-- (Co-) Team leader of the team *Research Data & Methods* at the *Center for Advanced Internet Studies* (CAIS)
+- (Co-) Team leader of the team *Research Data & Methods* at the [*Center for Advanced Internet Studies* (CAIS)](https://www.cais-research.de/)
     
 - Ph.D. in Psychology, University of Cologne  
 
-- Previously worked in several research projects investigating the use and effects of digital media (Cologne, Hohenheim, Münster, Tübingen)  
-
-- Other research interests
+- Research interests
+    - Use and effects of digital media
     - Computational methods
     - Data management
     - Open science
@@ -89,7 +40,7 @@ In this course, we will focus on reproducible research using `R`. However, there
 
 ## About us
 
-*Bernd Weiß*
+**Bernd Weiß**
 
 .small[
 - Head of team [GESIS Panel](https://www.gesis.org/en/gesis-panel/gesis-panel-home) and deputy head of the department [Survey Design and Methodology](https://www.gesis.org/en/institute/departments/survey-design-and-methodology) at GESIS
@@ -100,14 +51,14 @@ In this course, we will focus on reproducible research using `R`. However, there
 
 - Approach to this workshop (and a disclaimer): Open Science and reproducible research are tools, but not part of my research agenda and I do not claim to be an expert in any of the things I will be talking about...  
 
-[bernd.weiss@gesis.org](mailto:bernd.weiss@gesis.org), [ORCID: 0000-0002-1176-8408](https://orcid.org/0000-0002-1176-8408), [@berndweiss](https://twitter.com/berndweiss), [personal website](https://berndweiss.net)
+[bernd.weiss@gesis.org](mailto:bernd.weiss@gesis.org), [ORCID: 0000-0002-1176-8408](https://orcid.org/0000-0002-1176-8408), [@berndweiss](https://twitter.com/berndweiss)
 ]
 
 ---
 
 ## About us
 
-### Arnim Bleier 
+**Arnim Bleier** 
 
 .small[
 - Senior researcher in the team *Designed Digital Data* in the department *Computational Social Science* at *GESIS*
@@ -123,7 +74,6 @@ In this course, we will focus on reproducible research using `R`. However, there
     - Right to replicate
 
 [arnim.bleier@gesis.org](mailto:arnim.bleier@gesis.org), [@arnimb](https://twitter.com/arnimb), [Google Scholar](https://scholar.google.de/citations?user=_fof5_EAAAAJ)
-
 ]
 
 
@@ -137,7 +87,53 @@ In this course, we will focus on reproducible research using `R`. However, there
 
 - What are your experiences with reproducible research practices (and the tools we cover in this course)?
 
-- What are your expectations for this course?
+Please try to keep it brief.
+
+---
+
+## Goals of this course
+
+After this course you should be...
+  - familiar with key concepts of reproducible research workflows
+  - able to (start) work(ing) with tools for reproducible research, such as `Git`, *GitHub*, `R Markdown`, `Jupyter Notebooks`, and `Binder`
+  - able to publish reproducible computational analysis pipelines with `R`
+
+---
+
+## Prerequisites
+
+For this course (esp. the exercises) you should have the following things installed on your computer:
+
+- A version of [`R`](https://www.r-project.org/) that is >= 4.0.0
+  - the following `R` packages: `tidyverse`, `rmarkdown`, `usethis`
+  
+```{r install-pkg, echo=TRUE, eval=FALSE}
+# check if packages are installed and install missing ones
+packages = c("tidyverse", "rmarkdown", "usethis")
+
+install.packages(setdiff(packages, rownames(installed.packages())))
+```
+
+- A recent version of [*RStudio*](https://www.rstudio.com/)
+- [`Git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+In addition, you should also have/create a [*GitHub*](https://github.com/) account.
+
+---
+
+## Prerequisites
+
+Did you have any trouble with the setup for this workshop?
+
+Installing/setting up...
+
+- [`git`](https://git-scm.com/)
+- [`R`](https://www.r-project.org/)
+- [*RStudio*](https://www.rstudio.com/products/rstudio/)
+- the required `R` packages [`rmarkdown`](https://rmarkdown.rstudio.com/index.html) & [`usethis`](https://usethis.r-lib.org/)
+- a [*GitHub*](https://github.com/) account
+
+?
 
 ---
 
@@ -151,13 +147,15 @@ https://github.com/jobreu/reproducible-research-gesis-2022
 
 - The workshop repository on the [*GESIS ILIAS*](https://ilias.gesis.org) contains some literature on tools and workflows for reproducibility as well as a timetable for this workshop
 
+- Feel free to ask questions anytime
+
 ---
 
 ## Online format
 
 - If possible, we invite you to turn on your camera
 
-- If you have an immediate question during the lecture parts, please send it via text chat, publicly or privately (to a person who is currently not presenting if you want an immediate response)
+- If you have an immediate question during the lecture parts, please send it via text chat, publicly or privately (ideally to a person who is currently not presenting)
 
 - If you have a question that is not urgent and might be interesting for everybody, you can also use audio (& video) to ask it at the end of a lecture part or during the exercises
 
@@ -183,6 +181,24 @@ course_content_2
 
 ---
 
+## Disclaimer
+
+We will cover several different tools that can be used for reproducible research in the quantitative social sciences. We will only be able to cover the basics of those tools, so if you want to continue to use them and use them in more advanced ways, you will probably need to "dig deeper" eventually and consult further resources (documentation, further tutorials, blog posts, or other publications).
+
+---
+
+## Disclaimer
+
+As you probably already know, there are a lot of different tools and workflows that can be employed for increasing the reproducibility of research. We will introduce you to some of those, but there is more, and, in the end, it depends on your personal preferences and needs what tools and workflows you employ.<sup>1</sup>
+
+In this course, we will focus on reproducible research using `R`. However, there also are solutions for reproducible research with other programming languages, such as `Python` or `Julia`, as well as statistical software packages, such as *SPSS*  and *Stata*.
+
+.small[
+[1] As you will see, we instructors also all have different preferences in our workflows and tool use.
+]
+
+---
+
 class: center, middle
 
 # Any questions so far?
@@ -192,3 +208,98 @@ class: center, middle
 class: center, middle
 
 # Next up: What is reproducibility and why does it matter?
+
+---
+
+## Why should we aim for reproducibility?
+
+```{r lazy-tweet, echo=FALSE, out.width="60%"}
+tweet_screenshot("https://twitter.com/hadleywickham/status/598532170160873472?ref_src=twsrc%5Etfw",
+            theme = "dark")
+```
+.small[
+https://twitter.com/hadleywickham/status/598532170160873472?ref_src=twsrc%5Etfw
+]
+
+---
+
+## What is reproducibility?
+
+As with (almost) everything in science, there are different definitions of reproducibility.
+We will discuss some of them in the following.
+
+---
+
+## Defining dimensions
+
+3-dimensional concept space
+
+```{r, three-dims, out.width = "50%", echo = F}
+include_graphics("https://dh-trier.github.io/trr/img/trr-cube.jpg")
+```
+<small><small>By Christof Schöch. Source: https://dh-trier.github.io/trr/#/2/1</small></small>
+
+---
+
+## Defining dimensions
+
+```{r, turing-dims, out.width = "75%", echo = F}
+include_graphics("https://the-turing-way.netlify.app/_images/reproducibility.jpg")
+```
+<small><small>[*The Turing Way Project*](https://the-turing-way.netlify.app/welcome.html) illustration by Scriberia. DOI: [10.5281/zenodo.3332807](https://doi.org/10.5281/zenodo.3332807)</small></small>
+
+---
+
+## *The Turing Way* definition
+
+```{r, turing-def, out.width = "80%", echo = F}
+include_graphics("https://the-turing-way.netlify.app/_images/reproducible-matrix.jpg")
+```
+<small><small>Source: https://the-turing-way.netlify.app/reproducible-research/overview/overview-definitions.html</small></small>
+
+---
+
+## Replication or reproduction?
+
+```{r, other-def, out.width = "50%", echo = F}
+include_graphics("https://dh-trier.github.io/trr/img/replication-typology-a.jpg")
+```
+<small><small>By Christof Schöch. Source: https://dh-trier.github.io/trr/#/2/2</small></small>
+
+---
+
+## Tools & workflows `r ji("hammer and wrench")` `r ji("clipboard")`
+
+Tools in our scenario are programming languages, programs, and other pieces of software that we can use to make our research (more easily) reproducible.
+
+Workflows are the ways in which we combine these tools to achieve our goal.
+
+---
+
+## Tools & workflows `r ji("hammer and wrench")` `r ji("clipboard")`
+
+Choosing tools and establishing worklflows are somewhat idiosyncratic processes that depend on...
+
+  - the requirements of your project (methods, data types...)
+  - the availability of tools
+  - your skills and knowledge
+  - the preferences of collaborators
+
+---
+
+## Reproducible research workflows
+
+> being an open scientist means .highlight[adopting a few straightforward research management practices, which lead to less error-prone, reproducible research workflows] ([Klein et al., 2018](https://doi.org/10.1525/collabra.158), p. 11)
+
+---
+
+## Research management practices
+
+There are quite a few practices that researchers can adopt to increase the reproducibility of their work.
+
+- [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
+- [Folder structures](https://psych-transparency-guide.uni-koeln.de/folder-structure.html)
+- [Naming things](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841?gi=3295916e039)
+- ...
+
+All of those practices as well as the use of the tools we cover in this workshop require a certain degree of **Computer literacy**.

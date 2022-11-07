@@ -2,7 +2,7 @@
 
 gesistheme
 Styles for Xaringan slides with GESIS theme
-July 2021
+July 2022
 
 /************
 
@@ -12,28 +12,62 @@ July 2021
   background-size: cover;
 }
 
-.title-slide h1 {
+.title-slide .title h1 {
   color: #58748F;
-  margin-top: 255px;
+  margin-top: 245px;
   margin-left: 300px;
   margin-right: 50px;
   text-align: left;
-  font-size: 28pt; /*36.4px;*/
+  font-size: 24pt; /*36.4px;*/
   position: fixed;
 }
 
-.title-slide h2 {
+.title-slide .subtitle h2 {
   color: #FFFFFF;
   font-weight: normal;
   margin-top: 375px;
   margin-left: 300px;
   margin-right: -50px;
   text-align: left;
-  font-size: 24pt;
+  font-size: 20pt;
   position: fixed;
 }
 
-/*.title-slide h3 {
+.title-slide .author h3 {
+  color: #FFFFFF;
+  font-style: italic;
+  margin-top: 420px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 16pt;
+  position: fixed;
+}
+
+.title-slide .date h3 {
+  color: #FFFFFF;
+  font-style: italic;
+  margin-top: 455px;
+  margin-left: 300px;
+  margin-right: -50px;
+  text-align: left;
+  font-size: 16pt;
+  position: fixed;
+}
+
+.title-slide .institute h3 {
+  color: #000000;
+  font-style: italic;
+  margin-top: 500px;
+  margin-left: 50px;
+  margin-right: -0px;
+  text-align: center;
+  font-size: 16pt;
+  position: fixed;
+}
+
+
+/*.title-slide h3:nth-of-type(1) {
   color: #FFFFFF;
   font-style: italic;
   margin-top: 420px;
@@ -44,27 +78,16 @@ July 2021
   position: fixed;
 }*/
 
-.title-slide h3:nth-of-type(1) {
+/*.title-slide h3:nth-of-type(2) {
   color: #FFFFFF;
   font-style: italic;
-  margin-top: 420px;
+  margin-top: 480px,
   margin-left: 300px;
   margin-right: -50px;
   text-align: left;
   font-size: 16pt;
   position: fixed;
-}
-
-.title-slide h3:nth-of-type(2) {
-  color: #FFFFFF;
-  font-style: italic;
-  margin-top: 455px;
-  margin-left: 300px;
-  margin-right: -50px;
-  text-align: left;
-  font-size: 16pt;
-  position: fixed;
-}
+}*/
 
 
 
@@ -99,7 +122,7 @@ July 2021
 .highlight {background-color: #FF6100;}
 
 /* Headings */
-
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro');
 h1, h2, h3 {
   font-family: 'Source Sans Pro';
   font-weight: normal;
@@ -121,6 +144,7 @@ h1, h2, h3 {
 }
 
 /* Code */
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro');
 .remark-code {
   font-family: 'Source Code Pro', monospace;
   font-size: 9pt;
