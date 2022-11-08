@@ -34,7 +34,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 
 | Time | Topic | Slides | Exercises | Solutions |
 | ---: | :---- | :----: | :-------: | :-------: |
-| 10:00 - 11:00 | Introduction | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Introduction.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/1_introduction.pdf) | - | - |
+| 10:00 - 11:00 | Introduction | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Introduction.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Introduction.pdf) | - | - |
 | 11:00 - 12:00 | Computer literacy | - | - | - |
 | 12:00 - 13:00 | *Lunch Break* | - | - | - |
 | 13:00 - 15:00 | Introduction to R Markdown | - | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_RMarkdown.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_RMarkdown.html) |
@@ -45,7 +45,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 
 | Time | Topic | Slides | Exercises | Solutions |
 | ---: | :---- | :----: | :-------: | :-------: |
-| 09:30 - 10:00 | Sharing, collaborating, publishing | - | - | - |
+| 09:30 - 10:00 | Sharing, collaborating, publishing | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Sharing_collaborating_publishing.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Sharing_collaborating_publishing.pdf) | - | - |
 | 10:00 - 11:00 | Git & RStudio | - | - | - |
 | 11:00 - 11:15 | *Coffee Break* | - | - | - |
 | 11:15 - 12:30 |Git & GitHub Part II | - | -| - |
@@ -53,4 +53,8 @@ Participants should have some basic knowledge of `R`. While this is not required
 | 13:30 - 14:45 | Jupyter Notebooks & Binder | - | - | - |
 | 14:45 - 15:00 | *Coffee Break* | - | - | - |
 | 15:00 - 16:00 |Build your own Binder | - | - | - |
-| 16:00 - 17:00 | Recap & Outlook | - | - | - |
+| 16:00 - 17:00 | Recap & Outlook | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Recap_outlook.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Recap_outlook.pdf) | - | - |
+
+## Acknowledgments
+
+The `R Markdown` parts of this workshop were created using the `R` packages [`xaringan`](https://github.com/yihui/xaringan), [`unilur`](https://koncina.github.io/unilur/), and [`woRkshoptools`](https://github.com/StefanJuenger/woRkshoptools). The materials are based on an [earlier version of this workshop](https://github.com/jobreu/reproducible-research-gesis-2021) and a [similar course by Frederik Aust and Johannes Breuer](https://github.com/crsh/reproducible-research-practices-workshop).
