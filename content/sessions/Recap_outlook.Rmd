@@ -74,7 +74,11 @@ plot_dependency_graph(
 3. [`renv`](https://rstudio.github.io/renv/articles/renv.html) by *RStudio*
   - Most flexible and powerful
   - Least straightforward to use
-  
+
+.small[
+*Note*: To ensure that everything works as on your machine, the packages need to be the same (version) as in the `checkpoint`/`groundhog`/`renv` library. So, to be extra sure about this, you may need to update your local package installations accordingly.
+]
+
 ---
 
 ## `checkpoint`
