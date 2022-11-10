@@ -105,11 +105,11 @@ After this course you should be...
 For this course (esp. the exercises) you should have the following things installed on your computer:
 
 - A version of [`R`](https://www.r-project.org/) that is >= 4.0.0
-  - the following `R` packages: `tidyverse`, `rmarkdown`, `usethis`
+  - the following `R` packages: `rmarkdown`, `usethis`, `gitcreds`
   
 ```{r install-pkg, echo=TRUE, eval=FALSE}
 # check if packages are installed and install missing ones
-packages = c("tidyverse", "rmarkdown", "usethis")
+packages = c("rmarkdown", "usethis", "gitcreds")
 
 install.packages(setdiff(packages, rownames(installed.packages())))
 ```

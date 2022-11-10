@@ -46,7 +46,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 | Time | Topic | Slides | Exercises | Solutions |
 | ---: | :---- | :----: | :-------: | :-------: |
 | 09:30 - 10:00 | Sharing, collaborating, publishing | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Sharing_collaborating_publishing.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Sharing_collaborating_publishing.pdf) | - | - |
-| 10:00 - 11:00 | Git & RStudio | - | - | - |
+| 10:00 - 11:00 | Git & RStudio | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Git_RStudi.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Git_RStudio.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_Git_RStudio.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_Git_RStudio.html) |
 | 11:00 - 11:15 | *Coffee Break* | - | - | - |
 | 11:15 - 12:30 |Git & GitHub Part II | - | -| - |
 | 12:30 - 13:30 | *Lunch Break* | - | - | - |
