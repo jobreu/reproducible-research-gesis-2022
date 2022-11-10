@@ -326,3 +326,13 @@ class: center, middle
 A really great resource on using `Git` (and *GitHub*) in combination with `R` and *RStudio* is the website [*Happy Git and GitHub for the useR*](https://happygitwithr.com/) by [Jennifer Bryan](https://jennybryan.org/). Much of the content in this session is based on this resource and it offers a lot of additional helpful information and advice (including some help with troubleshooting commonly encountered issues).
 
 Another good introductory resource is the *RStudio*/*posit* How-To Article on [*Version Control with Git and SVN*](https://support.rstudio.com/hc/en-us/articles/200532077?version=2021.09.0%2B351&mode=desktop).
+
+---
+
+## Next sessions
+
+Up until now, the scenario in this workshop was that you make your research reproducible for future you. 
+
+However, the ultimate goal in the sense of open science should be to make our research reproducible for "the world".
+
+In the next two sessions, we will into a solution for making your research reproducible for everybody: "One-click reproducibility" using *Jupyter Notebooks* and *Binder*

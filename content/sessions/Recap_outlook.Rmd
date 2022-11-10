@@ -34,8 +34,51 @@ course_content_2
 
 As we said in the introduction, we cannot cover all tools and topics related to reproducible research in this workshop. However, we want to use this session to cover some additional tools as well as other topics related to reproducible research:
 
+- Other options for collaboration
 - `R` package dependency management
 - Workflow & project templates
+
+---
+
+## Collaboration & different tool stacks
+
+As we all know from experience, people have different knowledge and preferences regarding the use of research tools. The workflow we focus on in this course require the use of `R`, `R Markdown`, and `Git`, as well as *RStudio* and *GitHub*. However, it is quite likely that we collaborate with others who do not use (all of) these tools.
+
+---
+
+## Collaboration & different tool stacks
+
+There also are `R` packages that you can use for collaborating on `R Markdown` documents with people who do not (want to) use `R Markdown` (and `Git`):
+
+- [`trackdown`](https://claudiozandonella.github.io/trackdown/) uses *Google Drive* for this
+
+- [`redoc`](https://noamross.github.io/redoc/) "is a package to enable a two-way R Markdown-Microsoft Word workflow" (*note*: the project is currently "in suspended animation ")
+
+---
+
+## `trackdown`
+
+The basic workflow for `trackdown` is that you upload the content of an `.Rmd` file to *Google Drive* where you can collaboratively edit the text parts. You can then download the document again (e.g., to edit the code in the `R Markdown` document in *RStudio*), and also update the file on *Google Drive* after changing the `.Rmd` locally. The [`trackdown` documentation](https://claudiozandonella.github.io/trackdown/) provides further details.
+
+---
+
+## Advanced use of `trackdown` with `Git`
+
+To combine `R Markdown` with collaborative text editing via `trackdown` and version control (and to avoid potential issues caused by - possibly unintended - changes to the code parts on *Google Drive*), the author of the `trackdown` package, [Claudio Zandonella Callegher](https://github.com/ClaudioZandonella), proposes a solution in an [issue in the *GitHub* repository for the package](https://github.com/ClaudioZandonella/trackdown/issues/31).
+
+Essentially, the idea here is to create a `trackdown` branch in the `Git` repository and merge it with the `main` branch which is (mainly) used to edit the code.
+
+---
+
+## Dependency management
+
+The `R` world is highly dynamic and networked. This means that...
+
+  - `R` packages change (sometimes in ways that cause changes in results or even breaking code)
+  
+  - `R` packages typically depend on other packages (which can also change)
+
+Eventually, this can lead to a problem often described as "code rot", meaning that code ceases to function (or leads to different results).
 
 ---
 
@@ -56,6 +99,7 @@ plot_dependency_graph(
 ## Dependency management
 
 - Our projects may use/require different package versions
+
 - Manually managing dependencies is a nightmare
     - Keeping track of the dependencies and their changes
     - Restoring the `R` environment
@@ -63,6 +107,16 @@ plot_dependency_graph(
 ---
 
 ## Dependency management
+
+In the previous sessions, we got to know *Binder*, which not only allows us to share our results and code with the world in an interactive manner, but also addresses the issue of code rot and dependency management (by sharing complete pre-specified `R` environments).
+
+--
+
+However, for various reasons, using *Binder* might not be an option. Luckily, there are also other (more lightweight) options for handling dependency management and preventing code rot when working with `R`.
+
+---
+
+## Solutions for `R`
 
 1. [`checkpoint`](https://github.com/RevolutionAnalytics/checkpoint/) by *Microsoft*
   - Requires a project-based workflow
@@ -128,6 +182,7 @@ checkpoint("2022-11-11", r_version = "4.1.3")
 ## Project setup and templates
 
 In this workshop, we have shown you how to manually set up a reproducible research workflows. However, there are some tools that you can use to automate parts of this process. These can range from very simple to very elaborate solutions.
+
 ---
 
 ## Project setup and templates

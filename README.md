@@ -39,21 +39,21 @@ Participants should have some basic knowledge of `R`. While this is not required
 | 12:00 - 13:00 | *Lunch Break* | - | - | - |
 | 13:00 - 15:00 | Introduction to R Markdown | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/RMarkdown.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/RMarkdown.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_RMarkdown.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_RMarkdown.html) |
 | 15:00 - 15:15 | *Coffee Break* | - | - | - |
-| 15:15 - 17:00 | Git & GitHub I | - | - | - |
+| 15:15 - 17:00 | Git & GitHub - Part I | - | - | - |
 
 ### Day 2
 
 | Time | Topic | Slides | Exercises | Solutions |
 | ---: | :---- | :----: | :-------: | :-------: |
-| 09:30 - 10:00 | Sharing, collaborating, publishing | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Sharing_collaborating_publishing.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Sharing_collaborating_publishing.pdf) | - | - |
-| 10:00 - 11:00 | Git & RStudio | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Git_RStudi.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Git_RStudio.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_Git_RStudio.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_Git_RStudio.html) |
-| 11:00 - 11:15 | *Coffee Break* | - | - | - |
-| 11:15 - 12:30 |Git & GitHub Part II | - | -| - |
+| 09:30 - 10:30 | Git & RStudio | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Git_RStudi.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Git_RStudio.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_Git_RStudio.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_Git_RStudio.html) |
+| 10:30 - 10:45 | *Coffee Break* | - | - | - |
+| 10:45 - 11:45 | Jupyter Notebooks & Binder | [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Binder.pdf) | - | - |
+| 11:45 - 12:30 |Build your own Binder | - | - | - |
 | 12:30 - 13:30 | *Lunch Break* | - | - | - |
-| 13:30 - 14:45 | Jupyter Notebooks & Binder | - | - | - |
-| 14:45 - 15:00 | *Coffee Break* | - | - | - |
-| 15:00 - 16:00 |Build your own Binder | - | - | - |
-| 16:00 - 17:00 | Recap & Outlook | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Recap_outlook.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Recap_outlook.pdf) | - | - |
+| 13:30 - 14:00 | Sharing & publishing | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Sharing_collaborating_publishing.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Sharing_collaborating_publishing.pdf) | - | - |
+| 14:00 - 14:15 | *Coffee Break* | - | - | - |
+| 14:15 - 15:45 |Git & GitHub - Part II | - | - | - |
+| 15:45 - 17:00 | Recap & Outlook | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Recap_outlook.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Recap_outlook.pdf) | - | - |
 
 ## Acknowledgments
 

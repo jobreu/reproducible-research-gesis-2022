@@ -18,11 +18,11 @@ layout: true
 **Johannes Breuer**
 
 .small[
-- Senior researcher in the team *Data Augmentation* in the department [*Survey Data Curation*](https://www.gesis.org/en/institute/departments/survey-data-curation) at *GESIS*
+- Senior researcher in the team *Data Augmentation*, department [*Survey Data Curation*](https://www.gesis.org/en/institute/departments/survey-data-curation) at *GESIS*
     - digital trace data for social science research
     - data linking (surveys + digital trace data) 
     
-- (Co-) Team leader of the team *Research Data & Methods* at the [*Center for Advanced Internet Studies* (CAIS)](https://www.cais-research.de/)
+- (Co-)leader of the team *Research Data & Methods* at the [*Center for Advanced Internet Studies* (CAIS)](https://www.cais-research.de/)
     
 - Ph.D. in Psychology, University of Cologne  
 
@@ -94,8 +94,11 @@ Please try to keep it brief.
 ## Goals of this course
 
 After this course you should be...
+
   - familiar with key concepts of reproducible research workflows
+  
   - able to (start) work(ing) with tools for reproducible research, such as `Git`, *GitHub*, `R Markdown`, `Jupyter Notebooks`, and `Binder`
+  
   - able to publish reproducible computational analysis pipelines with `R`
 
 ---
@@ -213,7 +216,7 @@ class: center, middle
 
 ## Why should we aim for reproducibility?
 
-```{r lazy-tweet, echo=FALSE, out.width="60%"}
+```{r lazy-tweet, echo=FALSE, out.width="55%"}
 tweet_screenshot("https://twitter.com/hadleywickham/status/598532170160873472?ref_src=twsrc%5Etfw",
             theme = "dark")
 ```
@@ -265,6 +268,20 @@ include_graphics("https://the-turing-way.netlify.app/_images/reproducible-matrix
 include_graphics("https://dh-trier.github.io/trr/img/replication-typology-a.jpg")
 ```
 <small><small>By Christof Schöch. Source: https://dh-trier.github.io/trr/#/2/2</small></small>
+
+---
+
+## Defining reproducibility
+
+> A minimum standard on a spectrum of activities (“reproducibility spectrum”) for assessing the value or accuracy of scientific claims .highlight[based on the original methods, data, and code] [...] In some fields, this meaning is, instead, associated with the term “replicability” or ‘repeatability’ ([FORRT Glossary - Reproducibility](https://forrt.org/glossary/reproducibility/))
+
+---
+
+## Computational reproducibility
+
+There also are distinctions between different types (or components) of reproducibility. One type/component that is especially relevant for this workshop is "Computational reproducibility":
+
+> Ability to .highlight[recreate the same results as the original study] (including tables, figures, and quantitative findings), .highlight[using the same input data, computational methods, and conditions of analysis]. The availability of code and data facilitates computational reproducibility, as does preparation of these materials (annotating data, delineating software versions used, sharing computational environments, etc). Ideally, computational reproducibility should be achievable by another second researcher (or the original researcher, at a future time), using only a set of files and written instructions ([FORRT Glossary - Computational reproducibility](https://forrt.org/glossary/computational-reproducibility/))
 
 ---
 
