@@ -11,7 +11,7 @@
 
 <meta name="author" content="R User" />
 
-<meta name="date" content="2022-11-04" />
+<meta name="date" content="2022-11-14" />
 
 <title>The relationship between trust in institutions and use of news media sources in the early phase of the COVID-19 pandemic</title>
 
@@ -358,7 +358,7 @@ COVID-19 pandemic</h1>
 <h3 class="subtitle">An analysis based on the GESIS Panel Special Survey
 on the Coronavirus SARS-CoV-2 Outbreak in Germany</h3>
 <h4 class="author">R User</h4>
-<h4 class="date">2022-11-04</h4>
+<h4 class="date">2022-11-14</h4>
 
 </div>
 
@@ -393,8 +393,8 @@ Outbreak in Germany</a>. The data set includes data for <em>N</em> =
 measuring trust in 1) the federal government, 2) the World Health
 Organization (WHO), and 3) scientists in dealing with the Corona virus
 as predictors, and the use of a) national public television or radio and
-b) Facebook as sources of current information about the Corona
-virus.</p>
+b) Facebook as sources of current information about the Corona virus as
+outcome variables.</p>
 <p>The predictors assessing trust were measured on a 5-point scale
 ranging from “1 - Do not trust at all” to “5 - Entirely trust”, with the
 additional response option “Don’t know” (those responses were excluded
@@ -638,10 +638,10 @@ variables</em></p>
 </div>
 <div id="regression-analysis" class="section level2">
 <h2>Regression analysis</h2>
-<p>We use a logistic regression model to explore how the use of 1)
-national public television and radio and 2) Facebook as sources of
-current information about the Corona virus are predicted by trust in the
-federal government, the WHO, and scientists in general.</p>
+<p>We use logistic regression to explore how the use of 1) national
+public television and radio and 2) Facebook as sources of current
+information about the Corona virus are predicted by trust in the federal
+government, the WHO, and scientists in general.</p>
 <pre class="r"><code>model_pubbr &lt;- glm(info_nat_pub_br ~ trust_government + trust_who + trust_scientists,
                    family = binomial(link = &quot;logit&quot;),
                    data = corona_survey)
@@ -812,6 +812,7 @@ R<sup>2</sup> Tjur
 </td>
 </tr>
 </table>
+<p><br></p>
 <p><em>Figure 2</em> displays the results of the two logistic regression
 models.</p>
 <pre class="r"><code>plot_models(model_pubbr, model_fb,

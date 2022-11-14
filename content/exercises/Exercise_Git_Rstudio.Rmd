@@ -10,7 +10,7 @@ In this set of exercises, we clone and work on the *GitHub* repository you have 
 
 In order to do the following exercises, you should have gone through the steps described in the setup information for the workshop. Specifically, you should...
 
-- make sure that we can use `Git` via *RStudio*
+- make sure that you can use `Git` via *RStudio*
 - have created and stored a PAT for authentication via `HTTPS` for *GitHub*
 
 ```{block, box.title = "Exercise 1", box.body = list(fill = "white"), box.icon = "fa-star"}
@@ -18,7 +18,7 @@ After we've made sure that everything works, we can now clone and work on the re
 ```
 
 ```{block, opts.label = "clues", box.icon = "fa-lightbulb"}
-You can create a new version-controlled project that is connected to an existing *GitHub* repository via the *RStudio* menu. If you need some further information, you can check out the [New project, GitHub first](https://happygitwithr.com/new-github-first.html) section in *Happy Git and GitHub for the useR*.
+You can create a new version-controlled project that is connected to an existing *GitHub* repository via the *RStudio* menu. If you need some further information, you can check out the [New project, GitHub first](https://happygitwithr.com/new-github-first.html) section in [*Happy Git and GitHub for the useR*](https://happygitwithr.com/index.html).
 ```
 
 ```{block, , box.title = "Solution 1", solution = TRUE, box.icon = "fa-check"}

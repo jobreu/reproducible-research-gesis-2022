@@ -89,7 +89,7 @@ We will use `HTTPS` with a Personal Access Token (PAT).
 
 # Creating a PAT
 
-You should have created a PAT in preparation for this course (via the *GitHub* web interface. If you have not yet done so, you can also use a function from the `usethis` package.
+You should have created a PAT in preparation for this course (via the *GitHub* web interface). If you have not yet done so, you can also use a function from the `usethis` package.
 
 ```{r create-gh-token, eval = FALSE}
 library(usethis)
@@ -98,6 +98,20 @@ create_github_token()
 ```
 
 **NB**: Do not close the browser window/tab with the PAT until you have stored it somewhere. You should treat the PAT like a password.
+
+---
+
+## Storing a PAT
+
+Once you have created a PAT, the simplest way to store it for use with `R` and *RStudio* is the `gitcreds_set()` function from the [`gitcreds` package](https://gitcreds.r-lib.org/).
+
+```{r store-pat, eval = FALSE}
+library(gitcreds)
+
+gitcreds_set()
+```
+
+*Note*: Of course, you can also (or additionally) store your PAT in another (safe) place, such as your password manager.
 
 ---
 
@@ -197,7 +211,7 @@ Once you have successfully created the project, you can start editing files or c
 
 ## Modifying & creating files within the project
 
-```{r files-changed, out.width = "75%", echo=FALSE}
+```{r files-changed, out.width = "80%", echo=FALSE}
 woRkshoptools::include_picture("./git_pane_files_changed.png")
 ```
 
@@ -207,7 +221,7 @@ woRkshoptools::include_picture("./git_pane_files_changed.png")
 
 Once you have reached a point at which you want to commit (and possibly also push) your changes, you can stage them by checking the boxes in the *Staged* column in the `Git` tab. This the *RStudio* GUI equivalent of `git add`. The status of previously untracked files will then change to *added*.
 
-```{r staged, out.width = "65%", echo=FALSE}
+```{r staged, out.width = "70%", echo=FALSE}
 woRkshoptools::include_picture("./git_staged.png")
 ```
 
@@ -215,14 +229,17 @@ woRkshoptools::include_picture("./git_staged.png")
 
 ## Committing & pushing changes
 
-After staging your changes you can commit them via the *Commit* button in the `Git` tab. In the commit menu that opens you should enter a meaningful commit message. Once that is done you can click the *Commit* button. If you want to, you can also directly push your changes to the remote repository on *GitHub* via the *Push* button. You can, of course, also do this at a later point (directly via the `Git` tab).
+After staging your changes, you can commit them via the *Commit* button in the `Git` tab. In the commit menu that opens you should enter a meaningful commit message. Once that is done you can click the *Commit* button.
 
+--
+
+If you want to, you can also directly push your changes to the remote repository on *GitHub* via the *Push* button. You can, of course, also do this at a later point (directly via the `Git` tab).
 
 ---
 
 ## Committing & pushing changes
 
-```{r commit, out.width = "85%", echo=FALSE}
+```{r commit, out.width = "100%", echo=FALSE}
 woRkshoptools::include_picture("./git_commit.png")
 ```
 
@@ -335,4 +352,4 @@ Up until now, the scenario in this workshop was that you make your research repr
 
 However, the ultimate goal in the sense of open science should be to make our research reproducible for "the world".
 
-In the next two sessions, we will into a solution for making your research reproducible for everybody: "One-click reproducibility" using *Jupyter Notebooks* and *Binder*
+In the next two sessions, we will explore a solution for making your research reproducible for everybody: "One-click reproducibility" using *Jupyter Notebooks* and *Binder*

@@ -8,7 +8,7 @@ subtitle: "Tools and Workflows for Reproducible Research in the Quantitative Soc
 
 Your task in this exercise is to create an `R Markdown` document that reports an analysis based on the (synthetic) data from the *GESIS Panel Special Survey on the Coronavirus SARS-CoV-2 Outbreak in Germany*. The output should be an `HTML` document. To come up with your own ideas for toy examples that you could include in your report, make sure to consult the [codebook for the original data](https://access.gesis.org/dbk/67378).
 
-**Note**: We have created an exemplary `R Markdown` report that you can use as inspiration or a starting point for creating document. You can find the `.Rmd` file as well as the `HTML` output in the `solutions` folder within the workshop materials: `Example_RMarkdown.Rmd` and `Example_RMarkdown.html`.
+**Note**: We have created an exemplary `R Markdown` report that you can use as inspiration or a starting point for creating your document. You can find the `.Rmd` file as well as the `HTML` output in the `solutions` folder within the workshop materials: `Example_RMarkdown.Rmd` and `Example_RMarkdown.html`.
 
 ```{block, box.title = "Exercise 1", box.body = list(fill = "white"), box.icon = "fa-star"}
 Create a new `R Markdown` document, give it a meaningful name, and save it somewhere in your project folder where you will find it. The output format that we want to use for this exercise is `HTML`.
@@ -95,7 +95,7 @@ Please note that we use several different packages in that example document. For
 ```
 
 ```{block, box.title = "Solution 4", solution = TRUE, box.icon = "fa-check"}
-Feel free to have a look at `Example_RMarkdown.Rmd` and the resulting `Example_RMarkdown.html` for some examples and inspiration. Also make sure to consult the [codebook for the original data set](https://access.gesis.org/dbk/67378). Remember that only a subset of these variables (i.e., the numeric ones) are included in the synthetic data file that we use in this course.
+Feel free to have a look at `Example_RMarkdown.Rmd` and the resulting `Example_RMarkdown.html` for some examples and inspiration. Also make sure to consult the [codebook for the original data set](https://access.gesis.org/dbk/67378). Remember that only a subset of these variables (i.e., the numeric ones) are included in the synthetic data file that we use in this course (and that all values < 0 have been recoded as `NA`).
 ```
 
 ```{block, box.title = "Exercise 5", box.body = list(fill = "white"), box.icon = "fa-star"}

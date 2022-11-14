@@ -43,7 +43,7 @@ layout: true
 **Bernd Weiß**
 
 .small[
-- Head of team [GESIS Panel](https://www.gesis.org/en/gesis-panel/gesis-panel-home) and deputy head of the department [Survey Design and Methodology](https://www.gesis.org/en/institute/departments/survey-design-and-methodology) at GESIS
+- Head of team [*GESIS Panel*](https://www.gesis.org/en/gesis-panel/gesis-panel-home) and deputy head of the department [*Survey Design and Methodology*](https://www.gesis.org/en/institute/departments/survey-design-and-methodology) at *GESIS*
 
 - Obtained a doctorate (Sociology) from the University of Cologne in 2008
 
@@ -61,7 +61,7 @@ layout: true
 **Arnim Bleier** 
 
 .small[
-- Senior researcher in the team *Designed Digital Data* in the department *Computational Social Science* at *GESIS*
+- Senior researcher in the team *Designed Digital Data* in the department [*Computational Social Science*](https://www.gesis.org/en/institute/departments/computational-social-science) at *GESIS*
     - natural language processing
     - probabilistic graphical models
   
@@ -117,7 +117,7 @@ packages = c("rmarkdown", "usethis", "gitcreds")
 install.packages(setdiff(packages, rownames(installed.packages())))
 ```
 
-- A recent version of [*RStudio*](https://www.rstudio.com/)
+- A recent version of [*RStudio*](https://posit.co/downloads/)
 - [`Git`](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 In addition, you should also have/create a [*GitHub*](https://github.com/) account.
@@ -132,8 +132,8 @@ Installing/setting up...
 
 - [`git`](https://git-scm.com/)
 - [`R`](https://www.r-project.org/)
-- [*RStudio*](https://www.rstudio.com/products/rstudio/)
-- the required `R` packages [`rmarkdown`](https://rmarkdown.rstudio.com/index.html) & [`usethis`](https://usethis.r-lib.org/)
+- [*RStudio*](https://posit.co/downloads/)
+- the required `R` packages [`rmarkdown`](https://rmarkdown.rstudio.com/index.html), [`usethis`](https://usethis.r-lib.org/), & [`gitcreds`](https://gitcreds.r-lib.org/)
 - a [*GitHub*](https://github.com/) account
 
 ?
@@ -150,21 +150,20 @@ https://github.com/jobreu/reproducible-research-gesis-2022
 
 - The workshop repository on the [*GESIS ILIAS*](https://ilias.gesis.org) contains some literature on tools and workflows for reproducibility as well as a timetable for this workshop
 
-- Feel free to ask questions anytime
-
 ---
 
 ## Online format
 
 - If possible, we invite you to turn on your camera
 
-- If you have an immediate question during the lecture parts, please send it via text chat, publicly or privately (ideally to a person who is currently not presenting)
+- Feel free to ask questions anytime
 
-- If you have a question that is not urgent and might be interesting for everybody, you can also use audio (& video) to ask it at the end of a lecture part or during the exercises
+  - If you have an immediate question during the lecture parts, please send it via text chat, publicly or privately (ideally to a person who is currently not presenting)
 
-  - please use the use the "raise hand" function in *Zoom* for this
+  - If you have a question that is not urgent and might be interesting for everybody, you can also use audio (& video) to ask it at the end of a lecture part or during the exercises
+(please use the use the "raise hand" function in *Zoom* for this)
 
-- We would also kindly ask you to mute your microphones when you are not asking (or answering) a question
+- We would kindly ask you to mute your microphones when you are not asking (or answering) a question
 
 ---
 
@@ -287,9 +286,9 @@ There also are distinctions between different types (or components) of reproduci
 
 ## Tools & workflows `r ji("hammer and wrench")` `r ji("clipboard")`
 
-Tools in our scenario are programming languages, programs, and other pieces of software that we can use to make our research (more easily) reproducible.
+In our case, **tools** are programming languages, programs, and other pieces of software that we can use to make our research (more easily) reproducible.
 
-Workflows are the ways in which we combine these tools to achieve our goal.
+**Workflows** are the ways in which we combine these tools to achieve our goal.
 
 ---
 
@@ -298,9 +297,14 @@ Workflows are the ways in which we combine these tools to achieve our goal.
 Choosing tools and establishing worklflows are somewhat idiosyncratic processes that depend on...
 
   - the requirements of your project (methods, data types...)
+  
   - the availability of tools
+  
   - your skills and knowledge
+  
   - the preferences of collaborators
+  
+  ...
 
 ---
 
@@ -315,7 +319,7 @@ Choosing tools and establishing worklflows are somewhat idiosyncratic processes 
 There are quite a few practices that researchers can adopt to increase the reproducibility of their work.
 
 - [Project-oriented workflow](https://www.tidyverse.org/blog/2017/12/workflow-vs-script/)
-- [Folder structures](https://psych-transparency-guide.uni-koeln.de/folder-structure.html)
+- [Clear folder structures](https://psych-transparency-guide.uni-koeln.de/folder-structure.html)
 - [Naming things](https://betterprogramming.pub/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841?gi=3295916e039)
 - ...
 
