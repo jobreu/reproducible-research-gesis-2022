@@ -6,7 +6,7 @@ subtitle: "Tools and Workflows for Reproducible Research in the Quantitative Soc
 ```{r child = "content/config/exercises_setup.Rmd"}
 ```
 
-In this set of exercises, we clone and work on the *GitHub* repository you have created in the previous session.
+In this set of exercises, you will clone and work on the *GitHub* repository you have created in the previous session.
 
 In order to do the following exercises, you should have gone through the steps described in the setup information for the workshop. Specifically, you should...
 
