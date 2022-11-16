@@ -76,6 +76,8 @@ GitHub
 - Note that my explanation does not include any R/RStudio-related processes.
 Johannes will talk about these things in more detail
 
+- Finally, I will focus on MS Windows. Arnim can help with macOS/Linux.
+
 ---
 
 
@@ -114,8 +116,7 @@ woRkshoptools::include_picture("./f_github-pat-2-developer.png")
 
 ## 
 
-And, generate a new token; important, save this Token (e.g.,
-`ghp_FqamoGsx6PcEnpwnXyh...`):
+And, generate a new token; important, save this Token (e.g., in your password manager):
 
 ```{r, out.width = "90%", echo = F}
 woRkshoptools::include_picture("./f_github-pat-3-create-token.png")
@@ -233,38 +234,77 @@ message after typing in the command `ssh -T git@github.com`:
 
 - Now, go to your GitHub account and create a new repository on GitHub 
 
-    - Startpage -> tab "Repositories" -> green button "New"
+- Startpage -> tab "Repositories" -> green button "New"
 
 ```{r, out.width = "40%", echo = F}
 woRkshoptools::include_picture("./f_github-new-repo.png")
 ```
+---
 
-    - Enter a new "Repository name"
 
-    - Make it "Private" (unless you have something important to share)
+## 
 
-    - Do **not** check any of the "Initialize this repository with" boxes
+- Enter a new "Repository name"
 
-    - Hit the green "Create repository" button
+- Make it "Private" (unless you have something important to share)
 
-    - Choose SSH or HTTPS as protocol ("Quick setup — if you’ve done this kind of thing before")
+- Do **not** check any of the "Initialize this repository with" boxes
 
-    - Look for "...or push an existing repository from the command line"
-
-    - SSH:
-        - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
-        - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
-
-    - HTTPS:
-        - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
-        - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
-    - Make sure that `git status` shows a clean repository
-    - Now you can run your first `git push origin main`
-    - Reload the GitHub page via F5; you now should see the content of your local repo `your-new-repo`
-    - ...
-    - You can delete a GitHub repository via the tab "Settings" -> "Options", then scroll down -> "Danger Zone" -> "Delete this repository"
+- Hit the green "Create repository" button
 
 ---
 
+
+## 
+
+- Choose SSH or HTTPS as protocol ("Quick setup — if you’ve done this kind of thing before")
+
+- Look for "...or push an existing repository from the command line"
+
+- SSH:
+  - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
+  - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+
+---
+
+
+## 
+
+- HTTPS:
+  - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
+  - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+
+- Make sure that `git status` shows a clean repository
+
+- Now you can run your first `git push origin main`
+
+- Reload the GitHub page via F5; you now should see the content of your local repo `your-new-repo`
+
+- You can delete a GitHub repository via the tab "Settings" -> "Options", then scroll down -> "Danger Zone" -> "Delete this repository"
+
+---
+
+
+class: center, middle
+# Inviting collaborators
+
+---
+
+
+class: center, middle
+# Merge conflicts
+
+---
+
+
+class: center, middle
+# Forking
+
+---
+
+class: center, middle
+# Pull requests
+
+---
 
 

@@ -243,10 +243,19 @@ you have a nice log file of all changes (like a lab notebook)
 
 - Authorship attribution 
 
+---
+
+
+## 
+
 - Modern web interfaces such as GitHub also allow for social interaction
-(strangers can send you [pull
+  - Strangers can send you [pull
 requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
 to improve your code/document/...)
+  - You can follow other interesting people or projects
+  - You can "star" projects to show your appreciation
+  - You can "fork" other projects 
+  - ...
 
 ---
 
