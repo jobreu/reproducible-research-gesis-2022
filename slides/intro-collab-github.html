@@ -622,6 +622,27 @@ class: center, middle
 ---
 
 
+## Recap
+
+- Basic introduction to Git
+
+- Git workflow
+
+- Important Git concepts/commands (`git init`, `git add`, `git commit`, `git
+log`, `git show`, `git clone`, `git checkout`, `git branch`, ...)
+
+- ...
+
+---
+
+
+class: center, middle
+# Overview
+
+---
+
+
+
 ## GitHub: Using personal access tokens
 
 - These days, [authentication via personal access tokens (PAT) (and
@@ -768,6 +789,35 @@ message after typing in the command `ssh -T git@github.com`:
 &gt; Hi berndweiss! You&#39;ve successfully authenticated, but GitHub does not provide shell access.
 
 ---
+
+
+## Exercise
+
+- In a previous exercise (see [](git:exercise1)), you have created your own repository (let&#39;s call it `your-new-repo`)
+
+- Now, go to your GitHub account and create a new repository on GitHub 
+    - Startpage -&gt; tab &quot;Repositories&quot; -&gt; green button &quot;New&quot;
+    - Enter a new &quot;Repository name&quot;
+    - Make it &quot;Private&quot; (unless you have something important to share)
+    - Do **not** check any of the &quot;Initialize this repository with&quot; boxes
+    - Hit the green &quot;Create repository&quot; button
+    - Choose SSH or HTTPS as protocol (&quot;Quick setup — if you’ve done this kind of thing before&quot;)
+    - Look for &quot;...or push an existing repository from the command line&quot;
+    - SSH:
+        - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
+        - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+    - HTTPS:
+        - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
+        - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+    - Make sure that `git status` shows a clean repository
+    - Now you can run your first `git push origin main`
+    - Reload the GitHub page via F5; you now should see the content of your local repo `your-new-repo`
+    - ...
+    - You can delete a GitHub repository via the tab &quot;Settings&quot; -&gt; &quot;Options&quot;, then scroll down -&gt; &quot;Danger Zone&quot; -&gt; &quot;Delete this repository&quot;
+
+---
+
+
 
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>

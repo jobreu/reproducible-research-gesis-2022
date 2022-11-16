@@ -20,6 +20,27 @@ class: center, middle
 ---
 
 
+## Recap
+
+- Basic introduction to Git
+
+- Git workflow
+
+- Important Git concepts/commands (`git init`, `git add`, `git commit`, `git
+log`, `git show`, `git clone`, `git checkout`, `git branch`, ...)
+
+- ...
+
+---
+
+
+class: center, middle
+# Overview
+
+---
+
+
+
 ## GitHub: Using personal access tokens
 
 - These days, [authentication via personal access tokens (PAT) (and

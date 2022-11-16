@@ -39,7 +39,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 | 12:00 - 13:00 | *Lunch Break* | - | - | - |
 | 13:00 - 15:00 | Introduction to R Markdown | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/RMarkdown.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/RMarkdown.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_RMarkdown.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_RMarkdown.html) |
 | 15:00 - 15:15 | *Coffee Break* | - | - | - |
-| 15:15 - 17:00 | Git & GitHub - Part I | - | - | - |
+| 15:15 - 17:00 | Git & GitHub - Part I | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/git-inro.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/git-intro.pdf) | - | - |
 
 ### Day 2
 
