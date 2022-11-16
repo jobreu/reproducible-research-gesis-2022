@@ -1,0 +1,1408 @@
+---
+title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
+subtitle: "Using Git and GitHub"
+author: "Bernd Weiß"
+date: "2022-11-18"
+presenter: Bernd
+editor_options: 
+  chunk_output_type: console
+---
+layout: true
+
+
+```{r child = "content/config/sessions_setup.Rmd"}
+```
+---
+
+class: center, middle
+# Overview
+
+---
+
+
+## 
+
+```{r, other-def, out.width = "50%", echo = F}
+woRkshoptools::include_picture("./xkcd_git.png")
+```
+
+(Source: xkcd, https://xkcd.com/1597/, accessed on 2017-12-23)
+
+---
+
+
+## Git and GitHub
+
+- In part I, I will be introducing Git -- and I will not talk very much about
+collaboration
+
+- Part II will focus on collaboration and GitHub
+
+
+---
+
+
+<!-- ## Git live demo -->
+
+<!-- .center[![](../../content/img/live-streaming.png)] -->
+
+<!-- <div>(Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a>)</div> -->
+
+<!-- --- -->
+
+
+```{python, echo=FALSE}
+## Initializing folders and files
+
+# Since we'd like to have a fully reproducible example, every time this notebook
+# is started everything is created from scratch. First, a test folder for Git is
+# being created.
+
+import os
+import shutil
+import re
+```
+
+```{python, echo = FALSE, message = FALSE}
+import subprocess
+root_path = os.getcwd()
+test_folder = os.path.join("e:", os.sep, "tmp", "git_test_folder")
+test_file_git = "test_file_git"
+
+## If this is the n+1-th run, check if we are already in folder test_folder and then go back to parent folder.    
+path = os.getcwd() 
+if "git_test_folder" in path:
+    os.chdir("..")
+
+## Start always from scratch: if test_folder exists, remove it. 
+#if os.path.exists(test_folder):
+#    subprocess.run(["rm -r", test_folder])    
+    ## Using shutil.rmtree is unreliable...
+    ## shutil.rmtree(test_folder)
+```
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+DIR="/e/tmp/git_test_folder"
+if [ -d "$DIR" ]; then
+  rm -fr ${DIR}
+fi
+```
+
+
+```{python, echo = FALSE, message = FALSE}
+if not os.path.isdir(test_folder):
+    os.makedirs(test_folder)
+```
+
+
+```{python, echo=FALSE, message = FALSE}
+#test_folder = "git_test_folder"
+test_file_git = "test_file_git"
+```
+
+
+```{python, echo = FALSE, results = FALSE, message = FALSE}
+# Second, change into git's test directory and create a new file with a total of four lines of text. 
+# print(test_folder)
+os.chdir(test_folder)
+f = open("test.do", "w")
+file_content = "l1: Branch: main\n" \
+               "l2: Author: BW\n" \
+               "l3: // Always start with a dumb comment:\n" \
+               "l4: use my_fancy_data.dta, clear\n" \
+               "l5: gen v1 = 1\n" \
+               "l6: gen v2 = v1 + 1\n" \
+               "l7: mean v1"
+f.write(file_content)
+f.close()
+```
+
+
+## The sample Stata file 
+
+So, let's print the content of the test file:
+
+```{python, message = FALSE}
+f = open(os.path.join(test_folder, "test.do"), "r")
+print(f.read())
+f.close()
+```
+
+---
+
+```{python, echo = FALSE}
+# I also will create a couple of handy python functions that will make my life much easier:
+def replace_text(file, old, new):
+    f = open(file, "r")
+    flist = f.read()
+    f.close()
+
+    import re
+    rep = re.compile(old)
+    flist = rep.sub(new, flist)   
+    ##print flist    
+
+    f = open(file, "w")
+    f.write(flist)
+    f.close()
+    
+def remove_line(file, line_number):
+    f = open(file, "r")
+    flist = list(f)
+    f.close()
+
+    f = open(file, "w")
+    ## delete n-th line
+    del flist[line_number - 1]    #delete regarding element
+    for i in flist:
+        f.write(i)
+    f.close()    
+    
+    
+def print_file(file):
+    f = open(file, "r")
+    print(f.read())
+    f.close()
+```
+
+```{python, echo=FALSE}
+os.chdir(root_path)
+```
+
+
+
+class: center, middle
+# The concept of version control 
+
+---
+
+
+## Preliminaries
+
+- Git and other tools have been developed in the context of software development
+(in the Linux community, to be more precise)
+
+- Even though there exits graphical user interfaces (GUIs) for working with Git,
+it is highly recommended that you have a basic knowledge of how to use the CLI 
+
+- Once you mastered using Git at the command line, using a GUI is a peace of
+cake 
+
+.small[Since most of you are working on a MS Windows PC, it is also a good idea to know
+the meaning of the `PATH` variable (what it is used for, how to access it and
+how to modify it).]
+
+---
+
+
+## Why use a Version Control System?
+
+- Version Control System = VCS
+
+- For backup
+
+- For collaborative work and syncing 
+
+- There is always a (the) "most recent" version of a file 
+
+- Given that there are conflicting versions of (text) files, Git is able to
+clearly identify these conflicts by displaying the differences of conflicting
+files (given they are in plain text)
+
+- Keeping track of changes (aka, time travel; all changes are tracked and it is
+quite easy to go back in time). .small[So, even if you invented Skynet (popcultural
+reference) and mankind is about to being terminated for good, you always can go
+back in time]
+
+---
+
+
+## 
+
+- And, avoiding the horror of `final_rev2_update12_after-computer-crashed.docx`
+(see http://phdcomics.com/comics.php?f=1531)
+
+```{r, out.width = "95%", echo = F}
+woRkshoptools::include_picture("./f_naming-horror.jpg")
+```
+
+---
+
+
+## 
+
+- For having the possibility to test new code/functionalities in a "sandbox"
+(aka a new "branch") .small[(following up my Skynet reference: create a parallel universe
+(the branch), do your evil thing and then go back to your reality if you don't
+like it, i.e., delete the parallel universe/branch)]
+
+- While creating a history of changes, you are supposed to provide proper and
+meaningful messages that describe what has changed. If you do this thoroughly,
+you have a nice log file of all changes (like a lab notebook)
+
+- Authorship attribution 
+
+- Modern web interfaces such as GitHub also allow for social interaction
+(strangers can send you [pull
+requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+to improve your code/document/...)
+
+---
+
+
+## For what type of files is a VCS useful?
+
+- Most useful for text files (Stata do files, SPSS syntax files, R skripts
+etc.). Text files can stored very efficient since only changes between version
+are tracked
+
+- Binary files (Blob = binary large object) (images, word files, Stata data
+files, etc.) can be stored in a VCS but less efficient than text files since
+every time the entire file is saved
+
+---
+
+
+## Terminology and concepts
+
+- There is Git. 
+
+- "Git" is the name of the software, and the actual command-line
+tool is `git` (e.g., in Windows it is `git.exe`).
+
+---
+
+
+## 
+
+- And, then there are GitHub, GitLab etc., which are (web-based GUI) front ends
+to make working with Git easier, especially when it comes to collaborative work.
+
+- GitHub and GitLab provide the opportunity to setup a remote Git repository. 
+
+- So, in most cases you will need a local installation of Git. 
+
+- In addition to being a frontend to Git, GitHub and GitLab also provide project
+management features and allow to create so-called issues that can be considered
+file-related todo items. You also can use milestone etc.
+
+---
+
+
+## Git: A 30,000 foot view
+
+- Git is a version control system (VCS). As mentioned above, a VCS allows you to
+track the history and attribution of your project files over time in a
+repository (Narębski, 2016)
+
+- It is, if you will, a (very, very) powerful undo function (well, kind of...)
+
+- To be more precise, Git is a distributed VCS (DCVS) and hence a tool for
+collaborartive work
+
+- If you want to utilize Git for collaborative work, one approach of using Git
+in this context assumes that there exists a central and remote repository. Most
+famous is GitHub, at GESIS we use GitLab
+
+---
+
+
+## 
+
+- Workflow in Git (given that a Git repository has already be initialized): 
+
+```{r, out.width = "50%", echo = F}
+woRkshoptools::include_picture("./git-basic.png")
+```
+
+Source: Healy, 2019; see https://plain-text.co/keep-a-record.html
+
+---
+
+## 
+
+1. Work locally (i.e., on your computer) on your files until a certain feature is
+completed (a function is completed, a paragraph written etc).
+
+2. `Commit` your file and write a commit message, i.e., inform git that a certain
+file (or more) have changed and inform your future self (or someone else) about
+the nature of your changes (aka write a commit message). This has to be done
+manually.
+
+3. Commit early, commit often!
+
+4. When a remote repository exists: send (`push`) your changes to the remote
+repository.
+
+
+---
+
+
+## How I use Git 
+
+- Git is a very powerful tool, in my own work, I utilize a rather limited set of
+its capabilities
+
+- This is what I mostly do with Git:
+    - Initialize a new Git repository or clone an existing respository
+    - Backup my work on a remote server
+    - Track changes
+    - Use branches to implement experimental features
+    - Search (and undo) previous changes (most of the time using the interface
+    provided bv GitHub or GitLab)
+    
+- "Google" (or whatever your prefered seach engine is) a lot ...
+
+---
+
+
+class: center, middle
+# Installing Git and setup 
+
+---
+
+
+## Download and installation
+
+Git (for Windows) can be downloaded from: https://git-scm.com/download/win.
+
+Here are a few questions that you will be asked during the installation:
+
+- Default editor (use Notepad++ if you have it on your computed, vim also works)
+
+- Adjusting your PATH environment (you might want to go with the second optionn "Use Git from the Windows command Prompt")
+
+- Choosing HTTPS... (go with default: OpenSSL)
+
+---
+
+
+## 
+
+In case you will be working with others, you also will need a remote repository
+(be able to acces a remote respository). For convenience reasons it is
+recommended that you also install/set up SSH (see next slides).
+
+For various reasons, I no longer use a standalone version of Git but use a
+version of Git that can be installed via [MSYS2](https://www.msys2.org/).
+
+> "MSYS2 is a collection of tools and libraries providing you with an
+easy-to-use environment for building, installing and running native Windows
+software."  --https://www.msys2.org/.
+
+---
+
+
+## Well, not so distributed at all...
+
+- Even though Git is called "distributed", most of the time, there is just one
+central server (e.,g., GitHub, GitLab, ...)
+
+- A Git project is stored in a repository, which can be local or remote
+
+- When using Git to access a remote repository (for backup or collaborative
+work) on a remote server, you need to authenticate yourself to the server
+
+- There are two ways of authentication: HTTPS or SSH
+
+---
+
+
+## 
+
+- Despite its technical details, I always choose SSH, but Johannes, for instance, prefers HTTPS
+
+- More information can be found on these websites:
+    - https://happygitwithr.com/index.html
+    - https://happygitwithr.com/https-pat.html
+    - https://happygitwithr.com/ssh-keys.html
+    - https://docs.github.com/en/get-started/getting-started-with-git/about-remote-repositories
+    - https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/about-authentication-to-github#authenticating-with-the-command-line
+
+---
+
+
+## GitHub: Using personal access tokens
+
+- These days, [authentication via personal access tokens (PAT) (and
+https)](https://happygitwithr.com/https-pat.html) seems the way to go when using
+GitHub
+
+- In the following, I will illustrate the process using multiple screenshots
+
+- Note that my explanation does not include any R/RStudio-related processes.
+Johannes will talk about these things in more detail
+
+---
+
+
+## 
+
+In GitHub, go to the `Settings` website:
+
+```{r, out.width = "65%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-0-settings.png")
+```
+
+---
+
+
+## 
+
+Next, go to the `Developer Settings` entry: 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-1-settings.png")
+```
+
+---
+
+
+## 
+
+Then, choose `Tokens (classic)`:
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-2-developer.png")
+```
+
+---
+
+
+## 
+
+And, generate a new token; important, save this Token (e.g.,
+`ghp_FqamoGsx6PcEnpwnXyh...`):
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-3-create-token.png")
+```
+
+---
+
+
+## 
+
+When you are now cloning a new repository (or pushing/pulling for the first
+time), you will be asked once to enter your username...
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-4-enter-credent.png")
+```
+
+---
+
+
+## 
+
+... and your Token (even though it says "Password"):
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-4-enter-credent2.png")
+```
+
+---
+
+
+## 
+
+If, for whatever reason, you decide to reset/remove your credentials, you can do so
+using the [Windows Credentials
+Manager](https://support.microsoft.com/en-us/windows/accessing-credential-manager-1b5c916a-6a16-889f-8581-fc16e8165ac0)
+(in German: "Anmeldeinformationsverwaltung")
+
+
+```{r, out.width = "70%", echo = F}
+woRkshoptools::include_picture("./f_github-pat-5-wincred.png")
+```
+
+---
+
+
+## Setting up SSH
+
+- SSH is a network protocol that comes in handy, when you work with remote
+repositories and when you do not want to type-in your passwort every time you
+pull (fetch) or push (send) from a remote repository. You still need to
+authenticate yourself, though.
+
+- To work with Git on you local computer, you do not need SSH (= Secure Shell). 
+
+- Authentication in SSH (which is also the name of the program) works by using a
+private and a public key (usually the public key has the file extension `.pub`,
+e.g., my public key is `id_rsa.pub`). When you start working with SSH for the
+very first time, you have to create both keys.
+
+---
+
+
+## 
+
+- The private key remains on your local computer and you have to make sure that
+it is safe -- it is a simple text file and it is your password now, and everyone
+who has your private key can access your files. Again, everyone who has your
+private key has your password!
+
+This is what my *public key* looks like:
+
+    ssh-rsa
+    AAAAB3NzaC1yc2EAAAABIwAAAQEAyOQ9RT6TkfgkdO2NspzdVJE5CZ03yYAhVwLGo
+    CrI3E9/Ix0MAySunXExjhsQi2XkhPBjLOEahYuuLaAWHuBc7apUPRNSBy+mdUHnH3
+    0BdTQijQ6vj3RL99HO4yrZnipIlkS5ufw/+hpbXXOzSOqTvyGtL9ygm3eA2HDSQtz
+    2ptFq8anODJDKrgTbNLb/YZ9KDIcpdO/Sfk4LtvaGF3tIFlyE+pogNmN4eWiYg9Xv
+    25BhVVxWMHadRFLeDastWO4SedriEHzQYaNgxVNTufqolJ0nbg4R//fVDxjR2SbzV
+    AHLZ+eVPUx+vzcPVMP9wYPcnii9YLiSRy+hlUAOR/kXeQ== berndweiss
+
+---
+
+
+class: middle
+## 
+
+**The *public key* (not the private key!) has to be stored at the
+GitHub/GitLab/... website. Now, everyone who has your public key can encrypt
+files (that are sent to you via the internet) but only you (or anyone else who
+has your private key) can decrypt the files. And, for that reasons you do not
+have to login everytime you push/pull files from the remote repository.**
+
+---
+
+
+## 
+
+- How to setup SSH on you computer is explained on this website:
+https://docs.gitlab.com/ce/ssh/README.html ("Generate an SSH key pair")
+
+- The most important point is that `ssh` is able to find your key pair, i.e., it
+needs to be located in your HOME folder
+
+If everything works well, you should receive the following friendly welcome
+message after typing in the command `ssh -T git@github.com`:
+
+> Hi berndweiss! You've successfully authenticated, but GitHub does not provide shell access.
+
+---
+
+
+class: center, middle
+# Basic workflow
+
+---
+
+
+## Setting up a Git repository
+
+Usually, there are two ways to set up/obtain a Git repository:
+
+1. You create a new Git repository, push it to GitHub/GitLab and start
+collaborating with your colleagues (or only yourself)
+
+2. You "clone" an existing repository from a remote Git server such as
+GitHub/GitLab (for more details see below)
+
+---
+
+
+## Creating a local Git repository 
+
+The first step is to create a Git repository. After the repository has been
+created, we need to tell `git` which files will be subject to version control.
+So, the following git commands will be utilized:
+
+- `git init`: Creates a new folder `.git`, which contains configuration files
+and the repository. As of now, `git` does not know anything about our file(s),
+e.g. `test.do`
+
+- From now on, all examples will refer to a demo repository called
+`git_test_folder`
+
+---
+
+
+## 
+
+The content of `git_test_folder` is
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+ls -la
+```
+
+
+And, `test.do` contains the following content: 
+
+
+```{python, echo = FALSE}
+f = open(os.path.join(test_folder, "test.do"), "r")
+print(f.read())
+f.close()
+
+```
+
+---
+
+
+## 
+
+Now, let's initialize the Git repository using the `git init` command.
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git init
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+ls -la
+```
+
+
+---
+    
+
+## `git status`
+
+Let's check the status of our newly created repository using the command `git
+status`. It shows the status of the current working tree (and branch, the main
+one is called `main`; it used to be called "master", the new convention, though,
+is "main"). As of now, `git` is not aware of any files yet, so it informs us
+about the existence of 'Untracked files: ...'.
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git status
+```
+
+---
+    
+
+## Adding files to a git repository: `git add` and `git commit`
+
+Now it is time for some file action by adding (a) file(s) to our repository. 
+
+In the previous section on `git status` it was recommended that `git add` is
+used to add files to the git repository:
+
+    (use "git add <file>..." to include in what will be committed)
+
+That is what we are going to do now: To actually 'save' (check-in or track)
+files in the repository, a *two-step* procedure needs to be performed.
+
+---
+
+
+## 
+
+The first step is to call `git add`, the second step is to commit the file(s)
+using `git commit`. For now, it might be hard to see the benefit of this
+two-step procedure, see http://gitolite.com/uses-of-index.html for a thorough
+description.
+
+- `git add -A` : Adds (here ´-A´ means "all files") files to the *index* (or
+staging area).
+
+- To add a particilar files to the index, use `git add my_special_file.do`.
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git add -A
+```
+
+---
+
+
+## 
+
+Again, let's see what `git status` has to say...
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git status
+```
+
+---
+
+
+## 
+
+The second step is to run the command 
+
+`git commit -m "your text, verbs in imperative form"` (see below), e.g. 
+
+`git commit -m "add function to compute tau^2"`. 
+
+Since this is my first commit, I always apply the following commit
+message: `git commit -m "initial commit`.
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git commit -m "Initial commit"
+```
+
+---
+
+
+## 
+
+According to the [Git developer site](https://git.kernel.org/pub/scm/git/git.git/tree/Documentation/SubmittingPatches?id=HEAD#n133) commit messages should follow the "imperative-style": 
+
+
+> "Describe your changes in imperative mood, e.g. "make xyzzy do frotz" instead of
+"[This patch] makes xyzzy do frotz" or "[I] changed xyzzy to do frotz", as if
+you are giving orders to the codebase to change its behavior. Try to make sure
+your explanation can be understood without external resources. Instead of giving
+a URL to a mailing list archive, summarize the relevant points of the
+discussion."
+
+---
+
+
+## 
+
+Again, let's see what `git status` reports:
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git status
+```
+
+
+So, there are no untracked files, that is, "nothing to commit, working directory
+clean". 
+
+---
+
+
+## Git's commit history: `git log`
+
+There is another useful command `git log` that informs about `git`'s history, i.e. commited files and folders:
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git log
+```
+
+Right now, the history only contains one entry. 
+
+.small[The very first line `commit ...` shows the SHA1 hash. The 'Secure Hash
+Algorithm 1' is used to calculate this long, hexadecimal number for a file.
+Files with identical content are represented by an identical SHA1 hash, files
+with different content do not share an identical SHA1 hash. Using these SHA1
+numbers, `git` can identify changes in a file.]
+
+---
+
+
+## Modify content
+
+Let's start changing the content of test.do. For instance, remove line 3 (`//
+Always start with a dumb comment:`). First, let's print the original file
+content again:
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+
+Here is some Python code that removes the comment line.
+
+
+```{python}
+remove_line("e:/tmp/git_test_folder/test.do", 3)
+```
+
+---
+
+
+## 
+
+Print out the new code file (remember, the comment line (3. line) has been
+removed).
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+
+
+Again, let's check `git status` to see what our repository is doing and what has
+changed... the important part is `modified:   test.do`
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+git status
+```
+
+---
+
+
+## Exercise
+
+- Open your Git Bash
+- Go to your Home directory via `cd ~` (or, actually, go wherever you want)
+- Create a new folder (either via `mkdir` or `create-project.sh`)
+- Change into the newly created directory via `<your input here>`
+- Initialize your new Git project via `git init`
+- Copy a few files (PDF files etc. -- does not really matter, but no sensitive
+material!) in your new project folder
+- What comes next? Hint: `git add` and then `git commit <your input>`
+- Check the status and the history of your Git repository
+- **PLEASE do not delete the repository, we will need it for a later exercise!**
+
+---
+
+
+
+class: center, middle
+# Moving back in time
+
+---
+
+
+## Undo changes / Going back in Git's history
+
+- Undoing changes can be done utilizing three different approaches (`git checkout`, `git revert`, `git reset`)
+
+- Depends on the state of your working directory (clean or uncommitted changes)
+
+- A pragmatic approach is to utilize the search functionality of a web platform
+such as GitHub or GitLab
+
+- Here, only some basics will be introduced, further information is provided by https://www.atlassian.com/git/tutorials/undoing-changes or https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
+
+---
+
+
+### git checkout
+
+- In order to undo (a) *uncommitted* changes or (b) going back to an earlier
+commit, respectively, the command `git checkout` can be utilized
+
+- You have multiple possibilities to undo changes. You can undo changes
+regarding a particular file or you can go back to an earlier commit, which may
+contain multiple changes (not a good practice, though)
+
+- `git checkout -- myfile` will discard all changes with respect to `myfile`
+
+- `git checkout -- .` (or use `git restore .`) will discard all changes in your
+working directory, which can include multiple files (remember the dot `.` from
+my Computational Literacy slides)
+
+- For more information see https://www.atlassian.com/git/tutorials/using-branches/git-checkout
+
+---
+
+
+## 
+
+- Now, let's discard all (uncommitted) changes that we made to file `test.do`
+and recover the lost line 3:
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+git status
+```
+
+Line 3 is (hopefully) missing:
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+---
+
+
+## 
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git checkout -- test.do
+```
+
+Voilà, our beloved comment (line 3) has been risen from the dead...
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+---
+
+
+## 
+
+Okay, let's again modify test.do. Now, we do this two times. I will use M1 and
+M2 to denote these two changes.
+
+```{python, echo = FALSE}
+replace_text("e:/tmp/git_test_folder/test.do", "Branch:", "M1: New line added\nBranch:")
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE, results = FALSE}
+cd /e/tmp/git_test_folder
+git status
+git add . -A
+git commit -m "add new line (M1)"
+```
+
+```{python, echo = FALSE}
+replace_text("e:/tmp/git_test_folder/test.do", "mean v1", "// M2: A new comment.\nmean v1")
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE, results = FALSE}
+cd /e/tmp/git_test_folder
+git status
+git add . -A
+git commit -m "add new comment (M2)"
+```
+
+Again, print new content of `test.do`.
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+
+---
+
+
+## 
+
+And, let's see the history via `git log`:
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git log
+```
+
+Now, we would like to discard any changes introduced by M1 and M2. 
+
+---
+
+
+## git revert
+
+Put simply: `git revert` can undo a certain commit and adds a new history to the project. 
+
+For more information see https://www.atlassian.com/git/tutorials/undoing-changes/git-revert
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git revert --no-edit HEAD~1
+```
+
+See https://nulab.com/learn/software-development/git-tutorial/git-collaboration/ for the specification of a commit relative to the most recent commit (HEAD)
+
+---
+
+## 
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git log
+```
+
+---
+
+## 
+
+And back to square one (without changing the history, though...)
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+cat test.do
+```
+
+---
+
+
+
+## git reset
+
+Put simply: `git reset` goes back to a certain commit and discards all later commits 
+
+Be very careful with `git reset` and do not use it when working with others!
+
+For more information see https://www.atlassian.com/git/tutorials/undoing-changes/git-reset
+
+---
+
+
+class: center, middle
+# Studying $\Delta$s 
+
+---
+
+
+## What has changed at the file level? `git show` and `git diff`
+
+In this chapter we will learn about `git show` and `git diff`, which show differences at the file level. However, for those of you who do not feel comfortable using the command line I highly recommend meld (http://meldmerge.org/).
+
+---
+
+
+## 
+
+So far, we have only a few commits. `git log` shows all commits, the SHA1 hash and the respective commit message. 
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git log
+```
+
+---
+
+
+## A brief intro to the unified diff format
+
+Using `git show` without any additional arguments shows the differences between the last commit and HEAD. The output follows the so called "unified diff format" (UDF). A good introduction of UDF ist provided by https://www.gnu.org/software/diffutils/manual/html_node/Detailed-Unified.html#Detailed-Unified. The following is mostly copy-and-paste from the aforementioned source. It is also imported to note that UDF utilizes so-called (c)hunks to describe changes. A hunk is a paragraph separated by an empty line. 
+
+---
+
+
+## `git show` 
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git show
+```
+
+---
+
+
+## 
+
+Frankly, I go to GitHub or GitLab and check the respective differences between files...
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./fig_git-diff.png")
+```
+
+---
+
+
+class: center, middle
+# Local and remote branches 
+
+---
+
+
+## Branching
+
+- In addition to being a powerful undo function, git also allows you to "toy
+around" with different "versions" of your text or code
+
+- Let's assume that you wrote a first draft of a Stata program (macro).
+Everything works as expected. From a programming perspective, though, the
+program is just ugly and it is therefore quite hard to add additional
+functionalities.
+
+- What I used to do was: save my original file as `my-great-program.do` and
+start working on a new version of the program using a file called
+`my-great-program_new.do`
+
+- This is not necessary with `git branch`
+
+---
+
+
+## 
+
+Let's start with a list of files that are currently in my project folder:
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+ls -la
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git status
+```
+
+---
+
+
+## 
+
+What branches are available? Once we have more than one branch, the `*` shows
+which branch is active (or: in wich branch we are in)
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git branch
+```
+
+---
+
+
+## 
+
+Create a new branch called `testing`
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git branch testing
+```
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git branch
+```
+
+---
+
+
+## 
+
+How do we get into the `testing` branch? Use `git checkout testing`
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git checkout testing
+git branch
+```
+
+---
+
+
+## 
+
+Create a new file `testingfile`
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+touch testingfile
+echo "in testing" > testingfile
+ls -la
+```
+
+---
+
+
+##  
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+cat testingfile
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git add testingfile
+git commit -m "new branch testing"
+```
+
+---
+
+
+## 
+
+Switch back to branch `main` (and `cat testingfile` should result in an error
+message, since there is no `testingfile` in branch `main`)
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git checkout main
+ls -la
+```
+
+---
+
+
+## 
+
+Now, we can use `merge` to combine `main` and `testing`
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+git merge testing
+```
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe", echo = FALSE}
+cd /e/tmp/git_test_folder
+ls -la
+```
+
+
+```{bash engine.path="D:/Programme/msys64/usr/bin/bash.exe"}
+cd /e/tmp/git_test_folder
+cat testingfile
+```
+
+---
+    
+
+## Working with remote repositories
+
+- As mentioned in the introduction, Git is especially powerful when it comes to
+collaborative work. 
+
+- In order to work with others, you need some sort of
+connection to these other person(s). The one I am discussing here is having a
+central repository C. 
+
+- Let us assume that you (x) have two other collaborators y
+and z. Then x (that's you), as well as y and z need to synchronize with the same
+repository C. There also exists another model which is based on a decentralized
+approach, where you could individually sync with x-y, x-z, y-z etc.
+
+---
+
+
+## Establishing a connection to a remote repository
+
+There are two ways to establish a connection to a remote repository:
+  1. Clone a remote repository via `git clone ...`.
+  2. Setting up a new remote repository via `git remote add <name> <url>`. 
+
+---
+
+## Cloning a remote repository
+
+- Cloning a remote repository via GitHub/GitLab/... is quite easy
+
+- Visit the website, on GitHub look for the green "Code" button, see also screenshot below
+
+- Decide wether you would like to use the HTTPS or SSH protocoll
+
+- Copy the link and execute `git clone`
+
+---
+
+
+## 
+
+- Here is an example using my workshop on "Meta-Analysis in Social Research", see https://github.com/berndweiss/dji-meta-analysis-2019
+
+- Open a CLI and execute 
+
+`git clone https://github.com/berndweiss/dji-meta-analysis-2019.git`
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-clone.png")
+```
+
+---
+ 
+
+## Adding a remote repository via `git remote add ...`
+
+- Using the git command `git remote add <name> <url>`. The usual name for
+`<name>` is `origin`, however, feel free to choose another name. The `<url>` for
+this repository looks like `git@git.gesis.org:weissbd/ps2017-xx-intro2git.git`;
+another example is this one:
+`git@github.com:berndweiss/ps2017-11_porto-campbell-ma-workshop.git`. The url
+can be found in the respective github/gitlab repository.
+  
+---
+  
+  
+##  
+  
+- The most convenient way in working with remove repositories is using SSH. In order to utilize SSH, the remote url has to be start with `git@git...`. 
+
+- It is also possible to use the HTTPS protocol. In these cases the urls look like so `https://example.com/path/to/repo.git`. 
+
+---
+
+
+## Delete remote branch
+
+`git push <remote_name> --delete <branch_name>`, e.g. `git push origin --delete my_branch`
+
+---
+
+
+## Dowloading a remote branch that is not on your computer (yet)
+
+Just run a simple `git pull` (see https://stackoverflow.com/a/2294385). Then, on
+your local repository checkout to that remote branch, e.g. `git checkput
+indepday`:
+
+    Switched to a new branch 'indepday'
+    Branch 'indepday' set up to track remote branch 'indepday' from 'origin'.
+
+After checkout to `indepday`, git automatically starts tracking the new branch. 
+
+---
+
+
+## Exercise
+
+- Start the Git Bash
+
+- Clone the respository of my workshop https://github.com/berndweiss/dji-meta-analysis-2019
+
+- Change into the newly created directory
+
+- List the Git history via `<your input --oneline>` (the `--oneline` is very handy) and determine the first 7 SHA1 digits
+
+---
+
+
+## Exercise
+
+- In a previous exercise (see [](git:exercise1)), you have created your own repository (let's call it `your-new-repo`)
+
+- Now, go to your GitHub account and create a new repository on GitHub 
+    - Startpage -> tab "Repositories" -> green button "New"
+    - Enter a new "Repository name"
+    - Make it "Private" (unless you have something important to share)
+    - Do **not** check any of the "Initialize this repository with" boxes
+    - Hit the green "Create repository" button
+    - Choose SSH or HTTPS as protocol ("Quick setup — if you’ve done this kind of thing before")
+    - Look for "...or push an existing repository from the command line"
+    - SSH:
+        - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
+        - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+    - HTTPS:
+        - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
+        - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+    - Make sure that `git status` shows a clean repository
+    - Now you can run your first `git push origin main`
+    - Reload the GitHub page via F5; you now should see the content of your local repo `your-new-repo`
+    - ...
+    - You can delete a GitHub repository via the tab "Settings" -> "Options", then scroll down -> "Danger Zone" -> "Delete this repository"
+
+---
+
+
+class: center, middle
+# Things we could not cover
+
+---
+
+
+
+## There is much more... 
+
+- Commit hygiene http://www.ericbmerritt.com/2011/09/21/commit-hygiene-and-git.html
+
+- `.gitconfig`
+
+- `.gitignore`
+
+- ...
+
+- A nice tutorial in German: "git - Der einfache Einstieg, eine einfache
+Anleitung, um git zu lernen. Kein Schnick-Schnack ;)
+https://rogerdudler.github.io/git-guide/index.de.html
+
+---
+
+class: small
+## References
+
+```{r child = "content/sessions/references.txt"}
+```
+---
