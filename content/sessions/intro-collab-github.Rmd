@@ -63,6 +63,8 @@ work) on a remote server, you need to authenticate yourself to the server
 
 ---
 
+
+
 ## GitHub: Using personal access tokens
 
 - These days, [authentication via personal access tokens (PAT) (and
@@ -227,19 +229,32 @@ message after typing in the command `ssh -T git@github.com`:
 
 ## Exercise
 
-- In a previous exercise (see [](git:exercise1)), you have created your own repository (let's call it `your-new-repo`)
+- In a previous exercise, you have created your own repository (let's call it `your-new-repo`)
 
 - Now, go to your GitHub account and create a new repository on GitHub 
+
     - Startpage -> tab "Repositories" -> green button "New"
+
+```{r, out.width = "40%", echo = F}
+woRkshoptools::include_picture("./f_github-new-repo.png")
+```
+
     - Enter a new "Repository name"
+
     - Make it "Private" (unless you have something important to share)
+
     - Do **not** check any of the "Initialize this repository with" boxes
+
     - Hit the green "Create repository" button
+
     - Choose SSH or HTTPS as protocol ("Quick setup — if you’ve done this kind of thing before")
+
     - Look for "...or push an existing repository from the command line"
+
     - SSH:
         - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
         - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+
     - HTTPS:
         - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
         - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
