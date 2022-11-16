@@ -58,7 +58,7 @@ The data we use comes from the [Public Use File (PUF) of the GESIS Panel Special
 
 ## Measures
 
-The variables we are interested in for this analysis are the ones measuring trust in 1) the federal government, 2) the World Health Organization (WHO), and 3) scientists in dealing with the Corona virus as predictors, and the use of a) national public television or radio and b) Facebook as sources of current information about the Corona virus. 
+The variables we are interested in for this analysis are the ones measuring trust in 1) the federal government, 2) the World Health Organization (WHO), and 3) scientists in dealing with the Corona virus as predictors, and the use of a) national public television or radio and b) Facebook as sources of current information about the Corona virus as outcome variables. 
 
 The predictors assessing trust were measured on a 5-point scale ranging from "1 - Do not trust at all" to "5 - Entirely trust", with the additional response option "Don't know" (those responses were excluded from our analyses). The two outcome variables were binary items. Respondents could either indicate that they used the respective source (in our case: national public television or radio and Facebook) for getting current information about the Corona virus or not.
 
@@ -110,7 +110,7 @@ corona_survey %>%
 
 ## Regression analysis
 
-We use a logistic regression model to explore how the use of 1) national public television and radio and 2) Facebook as sources of current information about the Corona virus are predicted by trust in the federal government, the WHO, and scientists in general.
+We use logistic regression to explore how the use of 1) national public television and radio and 2) Facebook as sources of current information about the Corona virus are predicted by trust in the federal government, the WHO, and scientists in general.
 
 ```{r regression}
 model_pubbr <- glm(info_nat_pub_br ~ trust_government + trust_who + trust_scientists,
@@ -137,6 +137,7 @@ tab_model(model_pubbr, model_fb,
 
 ```
 
+<br>
 
 *Figure 2* displays the results of the two logistic regression models.
 

@@ -41,11 +41,9 @@ One solution for producing dynamic documents is `R Markdown`.
 `R Markdown` is...
 
 - an authoring framework
---
 
 - a document format (`.Rmd`)
 
---
 - an [`R` package](https://github.com/rstudio/rmarkdown)
 
 ---
@@ -95,7 +93,7 @@ In a nutshell, with `R Markdown` it is possible to generate **reproducible** dyn
   + Open Document
   + `RTF`
 
-For a [full list of supported output formats](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats) see the `rmarkdown` package documentation.
+For a [full list of supported output formats](https://rmarkdown.rstudio.com/docs/reference/index.html#section-output-formats), see the `rmarkdown` package documentation.
 
 ---
 
@@ -103,7 +101,7 @@ For a [full list of supported output formats](https://rmarkdown.rstudio.com/docs
 
 There are quite a few packages that offer extension output formats for `R Markdown`. For example:
 
-- [`xaringan`](https://github.com/yihui/xaringan) for presentations---which is what we use for our slides
+- [`xaringan`](https://github.com/yihui/xaringan) for presentations (which is what we use for these slides)
 - [`bookdown`](https://bookdown.org/) for books (but also for websites)
 - [`blogdown`](https://bookdown.org/yihui/blogdown/) for websites
 - [`vitae`](https://pkg.mitchelloharawild.com/vitae/) for (data-based) Résumés and CVs
@@ -111,14 +109,6 @@ There are quite a few packages that offer extension output formats for `R Markdo
 - [`papaja`](https://github.com/crsh/papaja) for APA-style manuscripts
 
 ... and there are many more.
-
----
-
-## `R Markdown` and versatility
-
-```{r rmd-formats, out.width ="65%", echo=FALSE}
-woRkshoptools::include_picture("./rmarkdown_formats.png")
-```
 
 ---
 
@@ -146,7 +136,7 @@ install.packages("rmarkdown")
 
 In this session, we will focus on generating `HTML` output with `R Markdown`.
 
-If you want to generate PDF output with `R Markdown`, you need a $\LaTeX$ installation. If you do not have $\LaTeX$ installed, the easiest option---especially if you do not want to use plain $\LaTeX$---is installing [`TinyTeX`](https://yihui.org/tinytex/), which is "a lightweight, cross-platform, portable, and easy-to-maintain LaTeX distribution based on TeX Live". You can do that using the [`tinytex` package](https://cran.r-project.org/web/packages/tinytex/index.html).
+If you want to generate PDF output with `R Markdown`, you need a $\LaTeX$ installation. If you do not have $\LaTeX$ installed, the easiest option (especially if you do not want to use plain $\LaTeX$) is installing [`TinyTeX`](https://yihui.org/tinytex/), which is "a lightweight, cross-platform, portable, and easy-to-maintain LaTeX distribution based on TeX Live". You can do that using the [`tinytex` package](https://cran.r-project.org/web/packages/tinytex/index.html).
 
 ---
 
@@ -386,7 +376,7 @@ You can insert a code chunk via the `Insert` button (select `R`) or using the ke
 
 --
 
-*Note*: It is possible to [render an `R` script into an `R Markdown` report](https://bookdown.org/yihui/rmarkdown-cookbook/spin.html) using `knitr::spin` and, vice versa, to [convert an `R Markdown` document to an `R` script](https://bookdown.org/yihui/rmarkdown-cookbook/purl.html) via `knitr::purl()`.
+*Note*: It is possible to [render an `R` script into an `R Markdown` report](https://bookdown.org/yihui/rmarkdown-cookbook/spin.html) using `knitr::spin()` and, vice versa, to [extract an `R` script from an `R Markdown` document](https://bookdown.org/yihui/rmarkdown-cookbook/purl.html) via `knitr::purl()`.
 
 ---
 
@@ -404,7 +394,11 @@ It is good practice to name code chunks. In the example on the previous slide `{
 woRkshoptools::include_picture("./code_chunk_options.png")
 ```
 
-You can also set a variety of options for code chunks. In the above example, we set `echo = FALSE` which means that the code itself will not be displayed in the output document (only its output). Other exemplary chunk options are `eval = FALSE`, meaning that the code is not executed, or `warning = FALSE` or `message = FALSE` which mean that warnings or messages produced by the code are not shown in the output document. For further options, you can check the [list of all code chunk options](https://yihui.org/knitr/options/). 
+You can also set a variety of options for code chunks. In the above example, we set `echo = FALSE` which means that the code itself will not be displayed in the output document (only its output).
+
+--
+
+Other exemplary chunk options are `eval = FALSE`, meaning that the code is not executed, or `warning = FALSE` or `message = FALSE` which mean that warnings or messages produced by the code are not shown in the output document. For further options, you can check the [list of all code chunk options](https://yihui.org/knitr/options/). 
 
 ---
 
@@ -441,7 +435,7 @@ A comment in `R Markdown` looks like this: `<!-- This is a comment -->`
 ## Exemplary data for this session
 
 In this session, we will use a synthetic data set based on the data from the [*GESIS Panel Special Survey on the Coronavirus SARS-CoV-2 Outbreak in Germany*](https://search.gesis.org/research_data/ZA5667). This synthetic data set was created by Bernd using the [`synthpop` package](https://www.synthpop.org.uk/).
-Apart from being synthetic, the data we use here differ from the original data set in two ways: They only include numeric variables (and no value or variable labels), and all values < 0 have been recoded as `NA`. You can find this file in the `data` folder within the workshop materials.
+Apart from being synthetic, the data we use here differ from the original data set in two ways: 1) They only include numeric variables (and no value or variable labels), and 2) all values < 0 have been recoded as `NA`. You can find this file in the `data` folder within the workshop materials.
 
 Original data set:
 
@@ -472,7 +466,7 @@ kable(table(gp_covid$sex),
 
 ## Knitting `r ji("yarn")`
 
-To compile the `R Markdown` document (in this case into a `HTML`) document, you simply need to click the `Knit` `r ji("yarn")` button. Doing this will generate the `HTML` file (by default) in the directory where the `.Rmd` file is stored. It will also open a preview window in *RStudio*.
+To compile the `R Markdown` source file (in this case into an `HTML` document), you simply need to click the `Knit` `r ji("yarn")` button. Doing this will generate the `HTML` file (by default) in the directory where the `.Rmd` file is stored. It will also open a preview window in *RStudio*.
 
 ```{r, rmarkdown-preview, out.width = "50%", echo = FALSE}
 woRkshoptools::include_picture("./rmarkdown_preview.png")
