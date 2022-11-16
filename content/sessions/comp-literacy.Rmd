@@ -657,11 +657,11 @@ absolute path is `J:\Work\PARI\PARI-F`
 
 ## Shortcuts (`.` and `..`) 
 
-- The dot `.` denotes the current working directory
+.small[See also https://en.wikipedia.org/wiki/Path_(computing)]
 
+- The dot `.` denotes the current working directory
 - The dot dot `..` denotes the parent directory, i.e., it points upwards in the
 folder hierarchy
-
 - Example in R
      ```r
     library(haven); library(ggplot2)
@@ -675,10 +675,7 @@ folder hierarchy
                                        # - ".." = go to parent folder of data, i.e., J:/Work/PARI/PARI-F
                                        # - Then, go to folder /doc and store the plot in this folder 
     ```
-
 - Finally, the tilde symbol `~` will bring you back to your home directory, e.g. `cd ~`
-   
-- See also https://en.wikipedia.org/wiki/Path_(computing)
 
 ---
 
@@ -1019,6 +1016,11 @@ a lot of time -- but can also safe a lot of time
 
 ## 
 
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Never spend 6 minutes doing something by hand when you can spend 6 hours failing to automate it</p>&mdash; Zhuowei Zhang (@zhuowei) <a href="https://twitter.com/zhuowei/status/1254266079532154880?ref_src=twsrc%5Etfw">April 26, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Never spend 6 minutes
+doing something by hand when you can spend 6 hours failing to automate
+it</p>&mdash; Zhuowei Zhang (@zhuowei) <a
+href="https://twitter.com/zhuowei/status/1254266079532154880?ref_src=twsrc%5Etfw">April
+26, 2020</a></blockquote> <script async
+src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 
