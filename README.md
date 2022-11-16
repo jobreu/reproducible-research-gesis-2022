@@ -35,7 +35,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 | Time | Topic | Slides | Exercises | Solutions |
 | ---: | :---- | :----: | :-------: | :-------: |
 | 10:00 - 11:00 | Introduction | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Introduction.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Introduction.pdf) | - | - |
-| 11:00 - 12:00 | Computer literacy | - | - | - |
+| 11:00 - 12:00 | Computer literacy | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/comp-literacy.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/comp-literacy.pdf) | see slides | see [create-project.sh](https://github.com/jobreu/reproducible-research-gesis-2022/blob/main/content/sh/create-project.sh) |
 | 12:00 - 13:00 | *Lunch Break* | - | - | - |
 | 13:00 - 15:00 | Introduction to R Markdown | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/RMarkdown.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/RMarkdown.pdf) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_RMarkdown.html) | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_RMarkdown.html) |
 | 15:00 - 15:15 | *Coffee Break* | - | - | - |
