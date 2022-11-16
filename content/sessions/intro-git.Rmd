@@ -384,7 +384,7 @@ Here are a few questions that you will be asked during the installation:
 ## 
 
 In case you will be working with others, you also will need a remote repository
-(be able to acces a remote respository). For convenience reasons it is
+(be able to access a remote repository). For convenience reasons it is
 recommended that you also install/set up SSH (see next slides).
 
 For various reasons, I no longer use a standalone version of Git but use a
@@ -658,6 +658,7 @@ numbers, `git` can identify changes in a file.]
 material!) in your new project folder
 - What comes next? Hint: `git add` and then <span style="color: red;">`git commit <your input>`</span>
 - Check the status and the history of your Git repository
+- Note: We will use that repository in tomorrow's session -- so, please do not delete it!
 
 ---
 

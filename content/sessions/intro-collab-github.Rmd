@@ -35,11 +35,33 @@ log`, `git show`, `git clone`, `git checkout`, `git branch`, ...)
 
 
 class: center, middle
-# Overview
+# Please, let me in (authentication)
 
 ---
 
 
+
+## Local or remote & HTTPS or SSH?
+
+- A Git project is stored in a repository, which can be local or remote
+
+- When using Git to access a remote repository (for backup or collaborative
+work) on a remote server, you need to authenticate yourself to the server
+
+- There are two ways of authentication: HTTPS or SSH
+
+---
+
+
+## Choose a remote server
+
+- GitHub (which will be using)
+
+- GitLab
+
+- ...
+
+---
 
 ## GitHub: Using personal access tokens
 
