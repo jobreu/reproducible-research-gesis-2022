@@ -187,23 +187,7 @@ In this workshop, we have shown you how to manually set up a reproducible resear
 
 ## Project setup and templates
 
-`create-project.sh`: small shell script for initializing a basic project folder structure (which can be easily adapted and extended using any text editor)
-
-To run the file, open a shell/command line interface (and navigate to) where the `create-project.sh` file is located. To execute it, you need to provide a valid path for the new project folder that should be created as an argument.
-
----
-
-## Project setup and templates
-
-```{r eval=FALSE, echo=TRUE}
-sh create-project.sh "./my-project"
-```
-
----
-
-## Templates
-
-There also are several `R` other packages for facilitating the creation and maintenance of reproducible research workflows, such as...
+We have already seen and tested the file `create-project.sh` (which is small shell script for initializing a basic project folder structure that can be easily adapted and extended using any text editor). However, there also are several other (more complex) packages and templates that can be used for the creation and maintenance of reproducible research workflows, such as...
 
 - [`template`](https://github.com/crsh/template)
 - [`WORCS`](https://cjvanlissa.github.io/worcs/index.html) - *Workflow for Open Reproducible Code in Science*
