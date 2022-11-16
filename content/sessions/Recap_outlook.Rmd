@@ -1,6 +1,6 @@
 ---
 title: "Tools and Workflows for Reproducible Research in the Quantitative Social Sciences"
-subtitle: "Introduction"
+subtitle: "Recap & Outlook"
 author: "Johannes Breuer, Bernd Weiss, & Arnim Bleier"
 date: "2022-11-18"
 presenter: Johannes
