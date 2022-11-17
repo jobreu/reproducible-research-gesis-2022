@@ -179,6 +179,16 @@ checkpoint("2022-11-11", r_version = "4.1.3")
 
 ---
 
+## Dependency management - one step further
+
+Going beyond `R` packages (and potentially also the `R` version), a more holistic (albeit also technically demanding) approach to dependency management (and combating code rot) is the use of containers via *Docker*. If you want to get into this, you can have a look at the [Introduction to Docker for R Users](https://colinfay.me/docker-r-reproducibility/) by [Colin Fay](https://colinfay.me/) or the mini-tutorial [Enough Docker to be Dangerous](https://seankross.com/2017/09/17/Enough-Docker-to-be-Dangerous.html) by [Sean Kross](https://seankross.com/). There are different prespecified *Docker* files for `R` users available via [*rocker*](https://github.com/rocker-org/rocker), and there also is a [Docker workflow to work reproducibly with papaja](https://github.com/crsh/papaja_docker).
+
+.small[
+*Note*: Remember that *Binder* also makes use of *Docker*.
+]
+
+---
+
 ## Project setup and templates
 
 In this workshop, we have shown you how to manually set up a reproducible research workflows. However, there are some tools that you can use to automate parts of this process. These can range from very simple to very elaborate solutions.
@@ -223,6 +233,12 @@ citation("trackdown")
 
 ---
 
+## FOSS is boss
+
+["Open source is a hard requirement for reproducibility"](https://www.brodrigues.co/blog/2022-11-16-open_source_repro/) (Bruno Rodrigues)
+
+---
+
 ## Looking back
 
 You created a *GitHub* repository containing materials for a fully reproducible research pipeline! `r ji("popper")`
@@ -241,6 +257,8 @@ class: center, middle
 
 We hope that we could get you started or help you with with making your research (more) reproducible. 
 Of course, as always, there is much more to explore and learn. The only way to really get familiar with the tools and workflows is if you use them for your own research.
+
+And remember that making your research (more) reproducible is an incremental process. Every step towards reproducibility is an improvement `r ji("footprints")`. You don't have (and probably should not) to leap to a full `R Markdown` + `Git` + `Docker` workflow all at once.
 
 --
 
