@@ -445,7 +445,7 @@ GESIS Panel Team (2020). *GESIS Panel Special Survey on the Coronavirus SARS-CoV
 
 ## Brief excursus: Tables in `R Markdown`
 
-As with many things in `R`, there are many options for creating tables that can be used with `R Markdown` (e.g., [`gt`](https://gt.rstudio.com/) or [`flextable`](https://davidgohel.github.io/flextable/index.html)). Discussing all of them would be too much for this workshop (but we will see some further examples in the session on `papaja`). An easy-to-use and quite versatile option is `knitr::kable()` which can be nicely extended using the [`kableExtra` package](https://haozhu233.github.io/kableExtra/).
+As with many things in `R`, there are many options for creating tables that can be used with `R Markdown` (e.g., [`gt`](https://gt.rstudio.com/) or [`flextable`](https://davidgohel.github.io/flextable/index.html)). Discussing all of them would be too much for this workshop. An easy-to-use and quite versatile option is `knitr::kable()` which can be nicely extended using the [`kableExtra` package](https://haozhu233.github.io/kableExtra/).
 
 ---
 
