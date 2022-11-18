@@ -258,7 +258,9 @@ class: center, middle
 We hope that we could get you started or help you with with making your research (more) reproducible. 
 Of course, as always, there is much more to explore and learn. The only way to really get familiar with the tools and workflows is if you use them for your own research.
 
-And remember that making your research (more) reproducible is an incremental process. Every step towards reproducibility is an improvement `r ji("footprints")`. You don't have (and probably should not) to leap to a full `R Markdown` + `Git` + `Docker` workflow all at once.
+--
+
+And remember that making your research (more) reproducible is an incremental process. Every step towards reproducibility is an improvement `r ji("footprints")`. You don't have to (and probably should not) leap to a full `R Markdown` + `Git` + `Docker` workflow all at once.
 
 --
 

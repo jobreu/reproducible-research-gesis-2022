@@ -230,7 +230,7 @@ If you have already initialized `Git` in that directory, the `Git` tab should be
 If you want to associate your local version-controlled project with a remote *GitHub* repository, you need to create one and connect it with your local project/directory. The easiest way to do this is using a function from the `usethis` package.
 
 ```{r usethis_gh, eval=FALSE}
-usethis::use_github()
+usethis::use_github(private = TRUE)
 ```
 
 You can also [go through this process manually](https://happygitwithr.com/existing-github-last.html#create-and-connect-a-github-repo-without-usethis) through the *GitHub* web interface and *RStudio*.

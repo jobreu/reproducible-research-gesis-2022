@@ -29,7 +29,7 @@ You can create a new *RStudio* project in an existing directory via *File* -> *N
 
 If you have initialized `Git` in that directory, the `Git` tab should be visible in the newly opened *RStudio* instance (ideally, all files that you want to be tracked should have been added and committed).
 
-Next, create a new *GitHub* repository (if possible, this should be private) and connect it to the existing project/directory. The easiest way to do this is running `usethis::use_github()` in `R`/*RStudio* (but you can also [go through the steps manually](https://happygitwithr.com/existing-github-last.html#create-and-connect-a-github-repo-without-usethis)).
+Next, create a new *GitHub* repository (if possible, this should be private) and connect it to the existing project/directory. The easiest way to do this is running `usethis::use_github(private = TRUE)` in `R`/*RStudio* (but you can also [go through the steps manually](https://happygitwithr.com/existing-github-last.html#create-and-connect-a-github-repo-without-usethis)).
 ```
 
 ```{block, box.title = "Exercise 2", box.body = list(fill = "white"), box.icon = "fa-star"}
