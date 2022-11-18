@@ -52,7 +52,7 @@ class: center, middle
 
 ## Local or remote & HTTPS or SSH?
 
-- A Git project is stored in a repository, which can be local or remote
+- A Git project/repo is stored in a repository, which can be local or remote
 
 - When using Git to access a remote repository (for backup or collaborative
 work) on a remote server, you need to authenticate yourself to the server
@@ -237,6 +237,86 @@ message after typing in the command `ssh -T git@github.com`:
 ---
 
 
+
+## Security
+
+- Be extremely careful including sensitive information (e.g., personal data, passwords, access tokens) into a (public) GitHub repository. There are people out there who search for these things... see also https://docs.github.com/en/code-security/secret-scanning
+
+- Use your `.gitignore` file to exclude sensitive files/folders
+
+- Please enable [two-factor authentication on GitHub](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication)
+
+- In case you have accidentally include sensitive information, check out this
+GitHub website on [Removing sensitive data from a repository](
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository)
+
+---
+
+
+class: center, middle
+# Working with remote respositories
+
+---
+
+
+## Adding a remote repository via `git remote add`
+
+- Can be accomplished using the git command `git remote add <name> <url>`. The usual name for
+`<name>` is `origin`, however, feel free to choose another name (when you clone a repo, then this has already happened). 
+
+- SSH: The `<url>` for
+this repository looks like `git@git.gesis.org:weissbd/ps2017-xx-intro2git.git`;
+another example is this one:
+`git@github.com:berndweiss/ps2017-11_porto-campbell-ma-workshop.git`. The url
+can be found in the respective github/gitlab repository.
+  
+- HTTPS: `git remote add origin https://github.com/berndweiss/lala.git`  
+  
+---
+
+
+
+## `git pull`
+
+- Given that you have already established a link to an remote server (such as
+GitHub, e.g., via `git remote add` or `git clone`), updates can be downloaded
+via the `git pull <name remote server> <branch>` command
+- Most often, this is `git pull origin main`
+
+.center[<img src="https://wac-cdn.atlassian.com/dam/jcr:63e58c34-b273-4e48-a6b1-6e3ba4d4a0ea/01%20bubble%20diagram-01.svg?cdnVersion=637" alt="drawing" width="400"/>]
+
+.small[(Source: https://www.atlassian.com/git/tutorials/syncing/git-pull)]
+
+---
+
+
+## 
+
+- In the background, `git pull` combines two steps, `git fetch` and `git merge`
+
+.center[<img src="https://wac-cdn.atlassian.com/dam/jcr:0269bb2d-eb7f-43d8-80a2-8afa88d11eea/02%20bubble%20diagram-02.svg?cdnVersion=637" alt="drawing" width="400"/>]
+
+(Source: https://www.atlassian.com/git/tutorials/syncing/git-pull)
+
+
+
+
+---
+
+
+## `git push`
+
+- Again, given that you have already established a link to an remote server
+(such as GitHub, e.g., via `git remote add` or `git clone`), updates can be
+uploaded via the `git push <name remote server> <branch>` command
+
+- Most often, this is `git push origin main`
+
+- More information can be found here: https://www.atlassian.com/git/tutorials/syncing/git-push
+
+---
+
+
 ## Exercise
 
 - In a previous exercise, you have created your own repository (let's call it `your-new-repo`)
@@ -270,18 +350,21 @@ woRkshoptools::include_picture("./f_github-new-repo.png")
 
 - Look for "...or push an existing repository from the command line"
 
-- SSH:
-  - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
-  - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+- HTTPS:
+  - GitHub offers some assistance in terms of providing the full `git remote add` command; copy this line, which should look like
+  
+  `git remote add origin https://github.com/berndweiss/your-repo-name.git`
+  
+  - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
 
 ---
 
 
 ## 
 
-- HTTPS:
-  - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
-  - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
+- SSH:
+  - Copy the line `git remote add origin git@github.com:berndweiss/your-repo-name.git` 
+  - Execute the command `git remote add origin git@github.com:berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
 
 - Make some changes (edit a text file, create a new file etc.). Then `add` and
 `commit` these changes locally
@@ -292,38 +375,16 @@ woRkshoptools::include_picture("./f_github-new-repo.png")
 
 - Reload the GitHub page via F5; you now should see the content of your local repo `your-new-repo`
 
+---
+
+
+## 
+
 - You can delete a GitHub repository via the tab "Settings" -> "Options", then scroll down -> "Danger Zone" -> "Delete this repository"
 
 ---
 
 
-## Security
-
-- Be extremely careful including sensitive information (e.g., personal data, passwords, access tokens) into a (public) GitHub repository. There are people out there who search for these things... see also https://docs.github.com/en/code-security/secret-scanning
-
-- Please enable [two-factor authentication on GitHub](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication)
-
-- xxxxx how to remove entries ...github remove
-
----
-
-
-class: center, middle
-# Working with remote respositories
-
----
-
-
-## `git pull`
-
-
----
-
-
-## `git push`
-
-
----
 
 
 
@@ -333,7 +394,63 @@ class: center, middle
 ---
 
 
+
+## Adding collaborators to your GitHub repo
+
+- Adding collaborators works only for GitHub repositories that you own
+
+- GitHub provides a lot of collaboration features
+
+  - Edit files in browser
+  - Change highlighting and commenting
+  - Interactive revise-and-resubmit workflow
+  - Issue tracker (to-do list and discussion)
+
+.small[(Source: http://frederikaust.com/reproducible-research-practices-workshop/slides/6_github_collaboration.html#5)]
+
+---
+
+
+## Workflows for collaboration
+
+- Adding changes to a repo without prior review 
+  - Push directly to main branch on GitHub
+  - You need be an invited collaborator
+
+- Suggest changes with review (pull request)
+  - Create a new branch ("parallel universe" of repository)
+  - You can be an invited collaborator or a complete stranger
+
+- Edits can be made directly on GitHub or locally on your computer
+
+.small[(Source: http://frederikaust.com/reproducible-research-practices-workshop/slides/6_github_collaboration.html#8)]
+
+---
+
+
+
 ## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-collab-1.png")
+```
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-collab-2.png")
+```
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-collab-3.png")
+```
+---
 
 
 class: center, middle
@@ -344,9 +461,63 @@ class: center, middle
 
 ## Merge conflicts
 
-- When mult
+- Merge conflicts occur when there are two competing changes that affect the same file *and* the same lines in that same file; or if one person decided to delete it while the other person decided to modify it 
 
-https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts
+- Git will inform you about a merge conflict and will indicate the two competing changes in a file
+
+.small[(source: https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts)]
+
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_merge-conf-github.png")
+```
+
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_merge-conf-cli.png")
+```
+
+---
+
+
+## An example of a merge conflict
+
+- This is how a merge conflict looks like in the file `test.R`:
+
+```
+<<<<<<< HEAD
+x <- rnorm(10)
+=======
+x <- rnorm(100000)
+>>>>>>> 047e3f7a00a5541622e5a40dc342df3af0591838
+mean(x)
+sd(x)
+```
+
+- A merge conflict only affects the developer who is causing a merge conflict
+
+- You have to resolve the merge conflict by editing the respective file(s) (then
+add and commit the changes) (remove the `<<<<<<<`, `=======`, `>>>>>>>` and save the file)
+
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_merge-conf-resolved.png")
+```
+
+---
+
 
 
 class: center, middle
@@ -354,8 +525,107 @@ class: center, middle
 
 ---
 
+
+## Forking
+
+- Forking refers to the process of creating a personal copy of someone else's
+project
+
+- Forking works only for public repositories (or, you have been invited to a
+private repository)
+
+- In order to contribute to another (public) repository via *pull requests*, you
+first need to fork the respective repository
+
+.small[(Source: https://docs.github.com/en/get-started/quickstart/contributing-to-projects)]
+
+---
+
+
+## 
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-fork.png")
+```
+
+---
+
+
+
 class: center, middle
 # Pull requests
+
+---
+
+
+## Pull requests on GitHub
+
+- Pull request only work in the context of a web platform such as GitHub or GitLab
+
+- It is a (polite/only) way to contribute to another person's GitHub repository
+  - If you are a collaborator, then it is a polite way o contribute
+  - If you are not a collaborator, then it is the only way to contribute
+
+- Note, the following example is based on 
+  - two GitHub users: `berndweiss` and `berndweisspublic`
+  - both users are not collaborating
+  - on each slide I will indicate which GitHub user is currently involved
+
+---
+
+
+## 
+
+- The current status of the repo (and the file `test.R`) from the perspective of GitHub user `berndweiss`
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pull-requ-0.png")
+```
+
+---
+
+
+
+## 
+
+- GitHub user `berndweisspublic` insists of 100000 observations and modified the file accordingly
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pull-requ-1.png")
+```
+
+---
+
+
+## 
+
+Since GitHub user `berndweisspublic` does not own the repository, he cannot commit the changes but *proposes* changes
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pull-requ-2.png")
+```
+
+---
+
+
+## 
+
+The next step is that `berndweisspublic` creates a *pull request*, i.e., asking user `berndweiss` to accept his changes  
+
+```{r, out.width = "90%", echo = F}
+woRkshoptools::include_picture("./f_github-pull-requ-3.png")
+```
+
+---
+
+
+## 
+
+GitHub user `berndweiss` is informed about a pull request; he can accept the pull request (`merge`) or close the pull request, i.e., deny it
+
+```{r, out.width = "70%", echo = F}
+woRkshoptools::include_picture("./f_github-pull-requ-4.png")
+```
 
 ---
 
@@ -380,10 +650,13 @@ called `wsrr_groups-github.txt` which assigns participants to groups.
 ## 
 
 - Task 1: Start the collaboration
-  - Every group member should create a new public repo on GitHub, the repo
+  - Every group member (A and B) should create a new public repo on GitHub, the repo
   should include at least one text file
+  
   - The other group member(s) should be invited to this GitHub repo
-  - Clone the repo on your local computer
+
+  - Clone the repo on your local computer, i.e., A clones B's repo and B clones
+  A's repo
 
 ---
 
@@ -391,12 +664,18 @@ called `wsrr_groups-github.txt` which assigns participants to groups.
 ## 
 
 - Task 2: Fight!
-  - Everyone in the group: On your computer, modify the **first line** of the text
-  file in your partner's repo. Make sure that your changes are different (delete a word in the first
-  line, add a word etc.)
-  - Use the GitHub file editor to also make make changes that should not be identical to your local changes 
+  - Everyone in the group (again, let's use members A and B): On your computer,
+  user A modifies the **first line** of the text file in your partner's repo (B). Make sure
+  that your changes are different (delete a word in the first line, add a word
+  etc.)
+  
+  - The repo's owner (B) also makes changes using the GitHub file editor; these changes should not be identical to user's A local changes 
+  
   - `add` and `commit` your changes on your computer and then try to `pull` the modified repo from GitHub.
+  
   - You will hopefully experience a merge conflict. Deal with it. 
+
+  - Now switch sides, i.e., B edits the file locally, and A makes changes on GitHub 
 
 ---
 
@@ -404,7 +683,9 @@ called `wsrr_groups-github.txt` which assigns participants to groups.
 ## 
 
 - Task 3: Forking
+
   - Fork my public test repo: https://github.com/berndweiss/twrr_public_testrepo
+
   - Fork your partner's public test repo
   
 ---
@@ -413,13 +694,9 @@ called `wsrr_groups-github.txt` which assigns participants to groups.
 ## 
 
 - Task 4. Pull requests
+
   - Go to you partner's repo, fork it, introduce some changes, and then make a pull request
+
   - Accept (or close, i.e., decline) your partner's pull request (you can also check out the options under
   `Files changed` -> `Review changes`)
-
-
-
-
-https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts
-
 
