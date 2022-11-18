@@ -1,0 +1,39 @@
+---
+title: "Exercises: Intro Binder and Jupytext"
+---
+
+<!-- #region -->
+# COVID-19 in Germany's Political Discourse 
+
+
+**RQ:** What prevalence does *COVID-19* have in the social media messaging across Germany's political spectrum? 
+
+We measure the number of posts on Twitter created by the parties in the German Bundestag containing the string "corona". We restrict us to the account of the left-wing party *Die Linke* ([@Linksfraktion](https://twitter.com/Linksfraktion)) and the right-wing party *Alternative für Deutschland* ([@AfDimBundestag](https://twitter.com/AfDimBundestag)).
+
+
+For the analysis we begin by importing the required libraries
+<!-- #endregion -->
+
+```{r}
+source("myLib.R")
+```
+
+<div class="alert alert-info", style="font-size:16px">
+    <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/120/apple/237/electric-light-bulb_1f4a1.png" width="20"/>  To execute cells press <strong>Shift+Enter</strong>.
+</div>
+
+
+Next, we read the [data](./data.csv) and plot the frequency of tweets. For plotting we use the [R](https://www.r-project.org/) package [ggplot](https://ggplot2.tidyverse.org/).
+
+```{r}
+data <- read_csv("data.csv", col_types = cols()) %>% mutate(date=as.Date(date)) 
+
+data %>% ggplot(aes(x = date, fill = username)) +
+  geom_histogram(position = "dodge", binwidth = 1) + 
+  labs(y = "Number of tweets / day", x = "Date",fill="Twitter accounts") +
+  scale_fill_manual(values = c_values)
+```
+
+```{r}
+
+```
