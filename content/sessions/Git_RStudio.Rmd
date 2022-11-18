@@ -332,9 +332,9 @@ You can also use the full range of arguments to customize your `Git` commands. F
 
 class: center, middle
 
-# [Exercise](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_Git_RStudio.html) time `r ji("weight_lifting_woman")``r ji("muscle")``r ji("running_man")``r ji("biking_man")`
+# [Exercise](https://jobreu.github.io/reproducible-research-gesis-2022/exercises/Exercise_Git_Rstudio.html) time `r ji("weight_lifting_woman")``r ji("muscle")``r ji("running_man")``r ji("biking_man")`
 
-## [Solutions](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_Git_RStudio.html)
+## [Solutions](https://jobreu.github.io/reproducible-research-gesis-2022/solutions/Exercise_Git_Rstudio.html)
 
 ---
 
