@@ -29,7 +29,17 @@ class: center, middle
 - Important Git concepts/commands (`git init`, `git add`, `git commit`, `git
 log`, `git show`, `git clone`, `git checkout`, `git branch`, ...)
 
-- ...
+- Also, the following slides are heavily influenced by another course on ["Reproducible research workflows for psychologists"](http://frederikaust.com/reproducible-research-practices-workshop/) by Frederik Aust and Johannes Breuer, especially the part on ["Collaborate with Git & GitHub"](https://crsh.github.io/reproducible-research-practices-workshop/slides/6_github_collaboration.html) 
+
+---
+
+
+## 
+
+.center[<img src="https://www.git-tower.com/learn/media/pages/git/ebook/en/desktop-gui/remote-repositories/introduction/405ca134e0-1667823656/basic-remote-workflow.png" alt="drawing" width="500"/>]
+
+
+(Source: https://www.git-tower.com/learn/git/ebook/en/desktop-gui/remote-repositories/introduction)
 
 ---
 
@@ -38,7 +48,6 @@ class: center, middle
 # Please, let me in (authentication)
 
 ---
-
 
 
 ## Local or remote & HTTPS or SSH?
@@ -166,7 +175,7 @@ woRkshoptools::include_picture("./f_github-pat-5-wincred.png")
 ## Setting up SSH
 
 - SSH is a network protocol that comes in handy, when you work with remote
-repositories and when you do not want to type-in your passwort every time you
+repositories and when you do not want to type-in your password every time you
 pull (fetch) or push (send) from a remote repository. You still need to
 authenticate yourself, though.
 
@@ -274,6 +283,9 @@ woRkshoptools::include_picture("./f_github-new-repo.png")
   - Copy the line `git remote add origin https://github.com/berndweiss/your-repo-name.git` 
   - Execute the command `git remote add origin https://github.com/berndweiss/your-repo-name.git` in the Git Bash in your local repository (`your-new-repo`)
 
+- Make some changes (edit a text file, create a new file etc.). Then `add` and
+`commit` these changes locally
+
 - Make sure that `git status` shows a clean repository
 
 - Now you can run your first `git push origin main`
@@ -285,16 +297,56 @@ woRkshoptools::include_picture("./f_github-new-repo.png")
 ---
 
 
+## Security
+
+- Be extremely careful including sensitive information (e.g., personal data, passwords, access tokens) into a (public) GitHub repository. There are people out there who search for these things... see also https://docs.github.com/en/code-security/secret-scanning
+
+- Please enable [two-factor authentication on GitHub](https://docs.github.com/en/authentication/securing-your-account-with-two-factor-authentication-2fa/configuring-two-factor-authentication)
+
+- xxxxx how to remove entries ...github remove
+
+---
+
+
+class: center, middle
+# Working with remote respositories
+
+---
+
+
+## `git pull`
+
+
+---
+
+
+## `git push`
+
+
+---
+
+
+
 class: center, middle
 # Inviting collaborators
 
 ---
 
 
+## 
+
+
 class: center, middle
 # Merge conflicts
 
 ---
+
+
+## Merge conflicts
+
+- When mult
+
+https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts
 
 
 class: center, middle
@@ -306,5 +358,68 @@ class: center, middle
 # Pull requests
 
 ---
+
+
+class: center, middle
+# Now, work together!
+
+---
+
+
+## Exercises
+
+- Since this exercise is about collaboration, you need at least another person
+who is willing to collaborate with you. Go to our Ilias repo, there is a file
+called `wsrr_groups-github.txt` which assigns participants to groups.
+
+- We have setup a Breakout room for each group. 
+
+---
+
+
+## 
+
+- Task 1: Start the collaboration
+  - Every group member should create a new public repo on GitHub, the repo
+  should include at least one text file
+  - The other group member(s) should be invited to this GitHub repo
+  - Clone the repo on your local computer
+
+---
+
+
+## 
+
+- Task 2: Fight!
+  - Everyone in the group: On your computer, modify the **first line** of the text
+  file in your partner's repo. Make sure that your changes are different (delete a word in the first
+  line, add a word etc.)
+  - Use the GitHub file editor to also make make changes that should not be identical to your local changes 
+  - `add` and `commit` your changes on your computer and then try to `pull` the modified repo from GitHub.
+  - You will hopefully experience a merge conflict. Deal with it. 
+
+---
+
+
+## 
+
+- Task 3: Forking
+  - Fork my public test repo: https://github.com/berndweiss/twrr_public_testrepo
+  - Fork your partner's public test repo
+  
+---
+
+
+## 
+
+- Task 4. Pull requests
+  - Go to you partner's repo, fork it, introduce some changes, and then make a pull request
+  - Accept (or close, i.e., decline) your partner's pull request (you can also check out the options under
+  `Files changed` -> `Review changes`)
+
+
+
+
+https://www.git-tower.com/learn/git/ebook/en/command-line/advanced-topics/merge-conflicts
 
 

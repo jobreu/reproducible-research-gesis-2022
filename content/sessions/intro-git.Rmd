@@ -288,7 +288,7 @@ tool is `git` (e.g., in Windows it is `git.exe`).
 - And, then there are GitHub, GitLab etc., which are (web-based GUI) front ends
 to make working with Git easier, especially when it comes to collaborative work.
 
-```{r, out.width = "70%", echo = F}
+```{r, out.width = "60%", echo = F}
 woRkshoptools::include_picture("./f_github-screenshot.png")
 ```
 (Source: https://github.com/jobreu/reproducible-research-gesis-2022)
@@ -311,7 +311,7 @@ repository (Narębski, 2016)
 - It is, if you will, a (very, very) powerful undo function (well, kind of...)
 
 - To be more precise, Git is a distributed VCS (DCVS) and hence a tool for
-collaborartive work
+collaborative work
 
 - If you want to utilize Git for collaborative work, one approach of using Git
 in this context assumes that there exists a central and remote repository. Most
@@ -331,6 +331,16 @@ woRkshoptools::include_picture("./git-basic.png")
 Source: Healy, 2019; see https://plain-text.co/keep-a-record.html
 
 ---
+
+
+## Another workflow image
+
+.center[<img src="https://res.cloudinary.com/practicaldev/image/fetch/s--M_fHUEqA--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://thepracticaldev.s3.amazonaws.com/i/128hsgntnsu9bww0y8sz.png" alt="drawing" width="500"/>]
+
+.small[(Source: https://dev.to/mollynem/git-github--workflow-fundamentals-5496)]
+
+---
+
 
 ## 
 
@@ -1189,16 +1199,35 @@ After checkout to `indepday`, git automatically starts tracking the new branch.
 
 ## Exercise
 
+Task 1:
+
 - Start the Git Bash and choose a location where you can store temporarily some
 files
 
-- Clone the respository of my workshop
+- Clone the repository of my workshop
 https://github.com/berndweiss/dji-meta-analysis-2019
 
 - Change into the newly created directory
 
 - List the Git history via `<your input --oneline>` (the `--oneline` is very
 handy) and determine the first 7 SHA1 digits
+
+---
+
+
+## 
+
+Task 2:
+
+- Create a new project folder via `create-project.sh new-project`
+
+- `cd` into your folder `new-project`
+
+- Use `git init` to initialize the Git repository
+
+- Use `git add` and `git commit` to add files and folders to your Git repo
+
+- Feel free to play around with your new Git repo
 
 ---
 
