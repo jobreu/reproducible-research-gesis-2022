@@ -6,7 +6,7 @@ subtitle: "Tools and Workflows for Reproducible Research in the Quantitative Soc
 ```{r child = "content/config/exercises_setup.Rmd"}
 ```
 
-In this set of exercises, you will clone and work on the *GitHub* repository you have created in the previous session.
+In this set of exercises, you can continue to work on the `Git` directory you created yesterday (we'll be following the [Existing project, GitHub last](https://happygitwithr.com/existing-github-last.html) path). Alternatively (e.g., if you encounter any issues), you can also follow the [New project, GitHub first](https://happygitwithr.com/new-github-first.html) approach and start from a new *GitHub* repository. Regardless of which option you choose, Exercises 2 to 5 should work the same.
 
 In order to do the following exercises, you should have gone through the steps described in the setup information for the workshop. Specifically, you should...
 
@@ -14,20 +14,26 @@ In order to do the following exercises, you should have gone through the steps d
 - have created and stored a PAT for authentication via `HTTPS` for *GitHub*
 
 ```{block, box.title = "Exercise 1", box.body = list(fill = "white"), box.icon = "fa-star"}
-After we've made sure that everything works, we can now clone and work on the repository we have created on *GitHub* in the previous session. When doing this, you should also create a new *RStudio* project.
+After we've made sure that everything works, create a new *RStudio*  project in the existing directory with `Git` initialized that you should have created yesterday. After that, create a *GitHub* repository and connect it to your local project.
 ```
 
 ```{block, opts.label = "clues", box.icon = "fa-lightbulb"}
-You can create a new version-controlled project that is connected to an existing *GitHub* repository via the *RStudio* menu. If you need some further information, you can check out the [New project, GitHub first](https://happygitwithr.com/new-github-first.html) section in [*Happy Git and GitHub for the useR*](https://happygitwithr.com/index.html).
+You first need to create a local *RStudio* project and associate it with the existing directory you created yesterday (`Git` should be initialized there and, ideally, all files that you want to be tracked and connect to the remote *GitHub* repository should already be staged and committed). Next, you need to create a *GitHub* repository and connect it to your local project. If you need some help (or further information), check the [Existing project, GitHub last](https://happygitwithr.com/existing-github-last.html) section in [*Happy Git and GitHub for the useR*](https://happygitwithr.com/index.html).
+
+
+If you encounter any issues that you cannot solve in the setup, you can also follow the [New project, GitHub first](https://happygitwithr.com/new-github-first.html) route and create a new (and empty) project. The following exercises will essentially work the same either way.
 ```
 
 ```{block, , box.title = "Solution 1", solution = TRUE, box.icon = "fa-check"}
-You can create a new version-controlled project and associate it with a repository cloned from *GitHub* via *File* -> *New Project* -> *Version Control*. Then choose `Git`, enter the URL of the *GitHub* repository, and choose a location where to store the project on your local machine. 
-As we will start working on the project right away, also check "Open in new session".
+You can create a new *RStudio* project in an existing directory via *File* -> *New Project* -> *Existing Directory*. As we will start working on the project right away, also check "Open in new session".
+
+If you have initialized `Git` in that directory, the `Git` tab should be visible in the newly opened *RStudio* instance (ideally, all files that you want to be tracked should have been added and committed).
+
+Next, create a new *GitHub* repository (if possible, this should be private) and connect it to the existing project/directory. The easiest way to do this is running `usethis::use_github()` in `R`/*RStudio* (but you can also [go through the steps manually](https://happygitwithr.com/existing-github-last.html#create-and-connect-a-github-repo-without-usethis)).
 ```
 
 ```{block, box.title = "Exercise 2", box.body = list(fill = "white"), box.icon = "fa-star"}
-If everything has worked, a new instance of *RStudio* should have opened with the working directory set to the location of your new project, the files included in the project folder visible in the *Files* tab, and an active `Git` tab. To make extra sure that everything worked, let's check the `Git` status of our project via the `Terminal` in *RStudio*.
+If everything has worked, a new instance of *RStudio* should have opened with the working directory set to the location of your project, the files included in the project folder visible in the *Files* tab, and an active `Git` tab. To make extra sure that everything worked, let's check the `Git` status of our project via the `Terminal` in *RStudio*.
 ```
 
 ```{block, opts.label = "clues", box.icon = "fa-lightbulb"}
@@ -39,7 +45,7 @@ git status
 ```
 
 ```{block, box.title = "Exercise 3", box.body = list(fill = "white"), box.icon = "fa-star"}
-Now that the project is set up and in sync with the remote repository, we can start working on it. Modify the README file (just add, remove or edit a few words). If you have not already done so, add (stage & commit) the `R Markdown` report (and its resulting output) you generated yesterday to your repository/project.
+Now that the project is set up and in sync with the remote repository, we can start working on it. Modify the README file (just add, remove or edit a few words). If you have not already done so, add (stage & commit) the `R Markdown` report (and its resulting output) you generated yesterday to your repository/project. Instead of (or in addition to) editing the README, you could also edit the `.rmd` file.
 
 After modifying the file(s), save the changes (via the *Save* icon in the *RStudio* menu or the keyboard shortcut your OS uses for saving files) and stage them in `Git`.
 ```

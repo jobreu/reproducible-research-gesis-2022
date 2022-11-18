@@ -151,7 +151,7 @@ In your everyday work, you quite likely need different workflows depending on th
 
 --
 
-In this session, we will focus on the *New project, GitHub first* approach.
+The *New project, GitHub first* approach is the simplest. Hence, if possible, you should aim for this route. For the exercises in this session, however, we will build on what you did yesterday and follow the [Existing project, GitHub last](https://happygitwithr.com/existing-github-last.html) approach.
 
 ---
 
@@ -201,9 +201,69 @@ woRkshoptools::include_picture("./git_clone_https.png")
 
 ---
 
+## Existing directory
+
+If you want to create a new *RStudio* project (`.Rproj` file) in an existing directory, you can also do that via the *RStudio* GUI: *File* -> *New Project* -> *Existing Directory*
+
+```{r existing-dir, out.width = "65%", echo=FALSE}
+woRkshoptools::include_picture("./project_existing_directory.png")
+```
+
+---
+
+## Existing directory
+
+If you have already initialized `Git` in that directory, the `Git` tab should be visible in the newly opened *RStudio* instance and you're good to go. If not, you have three options of doing so:
+
+1. Run the `R` command `usethis::use_git()` (in the console)
+
+2. Via the *RStudio* GUI (in the new project): *Tools* -> *Project Options* -> *Git/SVN* -> select `Git` as the version control system (and confirm)
+
+3. Run `git init` in the Terminal (we'll get to using the Terminal in *RStudio* in just a bit)
+
+**NB**: If you still need to initialize `Git` in the directory, you will also need to add and commit all of the existing files that are in that directory (at least the ones that you want to be tracked; remember that you can add files that you don't want to be tracked to the `.gitignore` file).
+
+---
+
+## Existing directory
+
+If you want to associate your local version-controlled project with a remote *GitHub* repository, you need to create one and connect it with your local project/directory. The easiest way to do this is using a function from the `usethis` package.
+
+```{r usethis_gh, eval=FALSE}
+usethis::use_github()
+```
+
+You can also [go through this process manually](https://happygitwithr.com/existing-github-last.html#create-and-connect-a-github-repo-without-usethis) through the *GitHub* web interface and *RStudio*.
+
+---
+
+## Quick notes about data protection
+
+*IMPORTANT*: Make sure that you do not (accidentally) publish anything that should not be public via *GitHub*!
+
+For our use cases, this will probably mostly concern a) research data (esp. if it is on the individual level and contains personal information; licenses and usage agreements also have to be taken into account here) and b) sensitive information like passwords, API keys, PAT/SSH keys, etc.
+
+---
+
+## Quick notes about data protection
+
+There are a few ways in which you can prevent (or at least substantially lower the risk of) accidentally sharing information (or files) that should not be made public:
+
+- Add files and folders you do not want to be tracked (and, thus, also not push to *GitHub*) to the `.gitignore` file for your project.
+
+- Keep sensitive information/files in a separate place (i.e., not in the version-controlled project directory).
+
+- When you create a new *GitHub* repository, set it to "private" and only set it to "public" once you are sure that it does not contain anything that should not be public.
+
+.small[
+*Note*: There are ways in which you can remove parts of your commit history at a later point (this will be discussed briefly in the second session on `Git` and *GitHub*), but it is still best to employ the prevention measures listed above.
+]
+
+---
+
 ## Modifying & creating files within the project
 
-Once you have successfully created the project, you can start editing files or creating new ones. When you have modified existing files and/or created new ones and saved the changes, these will be displayed in the `Git` tab in *RStudio* and their status will be indicated as *modified* or *untracked*.
+Once you have successfully created a project (and connected it to a remote repository), you can start editing files or creating new ones. When you have modified existing files and/or created new ones and saved the changes, these will be displayed in the `Git` tab in *RStudio* and their status will be indicated as *modified* or *untracked*.
 
 *Note*: The `Git` tab also displays in which branch you are currently working.
 
@@ -221,7 +281,7 @@ woRkshoptools::include_picture("./git_pane_files_changed.png")
 
 Once you have reached a point at which you want to commit (and possibly also push) your changes, you can stage them by checking the boxes in the *Staged* column in the `Git` tab. This the *RStudio* GUI equivalent of `git add`. The status of previously untracked files will then change to *added*.
 
-```{r staged, out.width = "70%", echo=FALSE}
+```{r staged, out.width = "75%", echo=FALSE}
 woRkshoptools::include_picture("./git_staged.png")
 ```
 
@@ -290,7 +350,7 @@ Lucky for us, if you need a CLI for using `Git`, you don't need to leave *RStudi
 
 Depending on your OS as well as your installation of `Git`, you can pick different shells to be run in the *RStudio* Terminal tab. You can choose those via the the *Terminal* menu in the *RStudio* Global Options.
 
-```{r terminal-menu, out.width = "45%", echo=FALSE}
+```{r terminal-menu, out.width = "50%", echo=FALSE}
 woRkshoptools::include_picture("./terminal_menu.png")
 ```
 
@@ -316,7 +376,7 @@ For some more information on choosing and using the shell in *RStudio*, you can 
 
 You can use the `Terminal` in *RStudio* to run all available `Git` commands, such as `git status`.
 
-```{r git-status, out.width = "80%", echo=FALSE}
+```{r git-status, out.width = "85%", echo=FALSE}
 woRkshoptools::include_picture("./git-status.png")
 ```
 
