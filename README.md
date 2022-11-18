@@ -52,7 +52,7 @@ Participants should have some basic knowledge of `R`. While this is not required
 | 12:30 - 13:30 | *Lunch Break* | - | - | - |
 | 13:30 - 14:00 | Sharing & publishing | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Sharing_publishing.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Sharing_publishing.pdf) | - | - |
 | 14:00 - 14:15 | *Coffee Break* | - | - | - |
-| 14:15 - 15:45 |Git & GitHub - Part II | https://jobreu.github.io/reproducible-research-gesis-2022/slides/intro-collab-github.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/intro-collab-github.pdf) | see slides | - |
+| 14:15 - 15:45 |Git & GitHub - Part II | (https://jobreu.github.io/reproducible-research-gesis-2022/slides/intro-collab-github.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/intro-collab-github.pdf) | see slides | - |
 | 15:45 - 17:00 | Recap & Outlook | [HTML](https://jobreu.github.io/reproducible-research-gesis-2022/slides/Recap_outlook.html), [PDF](https://raw.githubusercontent.com/jobreu/reproducible-research-gesis-2022/main/slides/Recap_outlook.pdf) | - | - |
 
 ## Acknowledgments
