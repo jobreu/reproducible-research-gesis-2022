@@ -563,7 +563,7 @@ class: center, middle
 - Pull request only work in the context of a web platform such as GitHub or GitLab
 
 - It is a (polite/only) way to contribute to another person's GitHub repository
-  - If you are a collaborator, then it is a polite way o contribute
+  - If you are a collaborator, then it is a polite way to contribute
   - If you are not a collaborator, then it is the only way to contribute
 
 - Note, the following example is based on 
